@@ -1,0 +1,96 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2621,         87]
+NotebookOptionsPosition[      2254,         69]
+NotebookOutlinePosition[      2615,         85]
+CellTagsIndexPosition[      2572,         82]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl072.nb\nPrbl072\nProject Euler\nCreated by Zhiming Wang on 12/11/12.\n\
+------------------------------------\nAlgorithm:\nThe number of reduced \
+proper fractions with denominators not exceeding ",
+ StyleBox["d",
+  FontSlant->"Italic"],
+ " is exactly the sum of Euler Phi functions of ",
+ StyleBox["2,3,...,d",
+  FontSlant->"Italic"],
+ ".\n---------------------------------\nAnswer: ",
+ "303963552391",
+ "\n"
+}], "Text",
+ CellChangeTimes->{{3.5642016214816732`*^9, 3.5642017599167137`*^9}, {
+  3.56420185593082*^9, 3.564201856140514*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", "  ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kRange", "=", "1000000"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"totalNumber", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"d", "=", "2"}], ",", 
+      RowBox[{"d", "\[LessEqual]", "kRange"}], ",", 
+      RowBox[{"++", "d"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"totalNumber", "+=", 
+        RowBox[{"EulerPhi", "[", "d", "]"}]}], ";"}]}], "\[IndentingNewLine]",
+      "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "totalNumber", "]"}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5642017630541897`*^9, 3.564201841350408*^9}}],
+
+Cell[BoxData["303963552391"], "Print",
+ CellChangeTimes->{{3.5642018335452538`*^9, 3.564201850319179*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{248, Automatic}, {16, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 560, 14, 198, "Text"],
+Cell[CellGroupData[{
+Cell[1142, 38, 987, 25, 154, "Input"],
+Cell[2132, 65, 106, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

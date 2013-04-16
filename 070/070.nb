@@ -1,0 +1,154 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4615,        145]
+NotebookOptionsPosition[      4176,        124]
+NotebookOutlinePosition[      4537,        140]
+CellTagsIndexPosition[      4494,        137]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl070.nb
+Prbl070
+Project Euler
+Created by Zhiming Wang on 12/10/12.
+------------------------------------
+Algorithm:
+Brute force.
+------------
+Answer: 8319823
+\
+\>", "Text",
+ CellChangeTimes->{{3.564200092544826*^9, 3.564200141861567*^9}, {
+  3.564201160077921*^9, 3.5642011606023483`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kRange", "=", "10000000"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"beginTime", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"nPhiNPair", ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"minimumNDividedByPhiN", "=", "kRange"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"n", "=", "2"}], ",", 
+      RowBox[{"n", "<", "kRange"}], ",", 
+      RowBox[{"++", "n"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"phiN", "=", 
+        RowBox[{"EulerPhi", "[", "n", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Sort", "[", 
+           RowBox[{"IntegerDigits", "[", "n", "]"}], "]"}], "\[Equal]", 
+          RowBox[{"Sort", "[", 
+           RowBox[{"IntegerDigits", "[", "phiN", "]"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"n", "/", "phiN"}], "<", "minimumNDividedByPhiN"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"minimumNDividedByPhiN", "=", 
+              RowBox[{"n", "/", "phiN"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"nPhiNPair", "=", 
+              RowBox[{"{", 
+               RowBox[{"n", ",", "phiN"}], "}"}]}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "nPhiNPair", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"endTime", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Took \>\"", ",", " ", 
+      RowBox[{"endTime", "-", "beginTime"}], ",", 
+      "\"\< seconds to finish.\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.56420014472047*^9, 3.564200440530871*^9}, {
+  3.564200471893098*^9, 3.564200555699551*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"8319823", ",", "8313928"}], "}"}]], "Print",
+ CellChangeTimes->{{3.564200430274781*^9, 3.564200441957502*^9}, 
+   3.564200483472918*^9, 3.5642006804065447`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Took \"\>", "\[InvisibleSpace]", 
+   "123.092365`8.541776109455704", 
+   "\[InvisibleSpace]", "\<\" seconds to finish.\"\>"}],
+  SequenceForm["Took ", 123.092365`8.541776109455704, " seconds to finish."],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.564200430274781*^9, 3.564200441957502*^9}, 
+   3.564200483472918*^9, 3.564200680407723*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{Automatic, 203}, {35, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 301, 13, 181, "Text"],
+Cell[CellGroupData[{
+Cell[883, 37, 2640, 65, 364, "Input"],
+Cell[CellGroupData[{
+Cell[3548, 106, 200, 4, 21, "Print"],
+Cell[3751, 112, 397, 8, 21, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,165 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5662,        156]
+NotebookOptionsPosition[      5297,        138]
+NotebookOutlinePosition[      5655,        154]
+CellTagsIndexPosition[      5612,        151]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl106.nb
+Prbl106
+Project Euler
+Created by Zhiming Wang on 12/17/12.
+------------------------------------
+Algorithm:
+Exhaustion.
+-----------
+Answer: 21384
+\
+\>", "Text",
+ CellChangeTimes->{{3.5647604082680817`*^9, 3.5647604167086487`*^9}, {
+  3.564760466458342*^9, 3.564760506139859*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kN", " ", "=", " ", "12"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"universe", "=", 
+     RowBox[{"Array", "[", 
+      RowBox[{
+       RowBox[{"#", "&"}], ",", "kN"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nNeedTest", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"m", "=", "1"}], ",", 
+      RowBox[{
+       RowBox[{"2", "*", "m"}], "\[LessEqual]", "kN"}], ",", 
+      RowBox[{"++", "m"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"mElementSubsets", "=", 
+        RowBox[{"Subsets", "[", 
+         RowBox[{"universe", ",", 
+          RowBox[{"{", "m", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"numberOfMElementSubsets", "=", 
+        RowBox[{"Length", "[", "mElementSubsets", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "<", "numberOfMElementSubsets"}], ",", 
+         RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"j", "=", 
+             RowBox[{"i", "+", "1"}]}], ",", 
+            RowBox[{"j", "\[LessEqual]", "numberOfMElementSubsets"}], ",", 
+            RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"subset1", "=", 
+              RowBox[{"mElementSubsets", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"subset2", "=", 
+              RowBox[{"mElementSubsets", "[", 
+               RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Length", "[", 
+                 RowBox[{"Intersection", "[", 
+                  RowBox[{"subset1", ",", "subset2"}], "]"}], "]"}], ">", 
+                "0"}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Continue", "[", "]"}], ";"}]}], 
+              "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"needTest", "=", "False"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"For", "[", 
+              RowBox[{
+               RowBox[{"index", "=", "1"}], ",", 
+               RowBox[{"index", "\[LessEqual]", "m"}], ",", 
+               RowBox[{"++", "index"}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"subset1", "[", 
+                    RowBox[{"[", "index", "]"}], "]"}], ">", 
+                   RowBox[{"subset2", "[", 
+                    RowBox[{"[", "index", "]"}], "]"}]}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"needTest", "=", "True"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Break", "[", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]",
+               "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{"needTest", ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"++", "nNeedTest"}], ";"}]}], "\[IndentingNewLine]", 
+              "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "nNeedTest", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5647590528993063`*^9, 3.5647590698386383`*^9}, {
+  3.564759208463154*^9, 3.564759251806135*^9}, {3.564759666615209*^9, 
+  3.564759703981542*^9}, {3.56475981981413*^9, 3.564759954939125*^9}, {
+  3.5647600262137003`*^9, 3.56476010168882*^9}, {3.564760132725833*^9, 
+  3.5647601679012012`*^9}, {3.564760200623164*^9, 3.564760358692222*^9}}],
+
+Cell[BoxData["21384"], "Print",
+ CellChangeTimes->{{3.5647603048561983`*^9, 3.5647603661898117`*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 299, 13, 181, "Text"],
+Cell[CellGroupData[{
+Cell[881, 37, 4296, 95, 448, "Input"],
+Cell[5180, 134, 101, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

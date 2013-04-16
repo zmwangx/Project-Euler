@@ -1,0 +1,174 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5443,        165]
+NotebookOptionsPosition[      5003,        144]
+NotebookOutlinePosition[      5365,        160]
+CellTagsIndexPosition[      5322,        157]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl121.nb
+Prbl121
+Project Euler
+Created by Zhiming Wang on 12/18/12.
+------------------------------------
+Algorithm:
+Exhaustion.
+-----------
+Answer: 2269
+\
+\>", "Text",
+ CellChangeTimes->{{3.5648437512868547`*^9, 3.564843787617323*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kNumberOfTurns", "=", "15"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"totalWinningProbability", "=", "0"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"masterNumber", "=", "0"}], ",", 
+      RowBox[{"masterNumber", "<", 
+       RowBox[{"2", "^", "kNumberOfTurns"}]}], ",", 
+      RowBox[{"++", "masterNumber"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"0", " ", "for", " ", "red"}], ",", " ", 
+        RowBox[{"1", " ", "for", " ", 
+         RowBox[{"blue", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"turns", "=", 
+        RowBox[{"IntegerDigits", "[", 
+         RowBox[{"masterNumber", ",", "2", ",", "kNumberOfTurns"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"2", "*", 
+           RowBox[{"Count", "[", 
+            RowBox[{"turns", ",", "1"}], "]"}]}], ">", "kNumberOfTurns"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"winningProbability", "=", "1"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"i", "=", "1"}], ",", 
+            RowBox[{"i", "\[LessEqual]", "kNumberOfTurns"}], ",", 
+            RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"turns", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "==", "1"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"(*", " ", "Blue", " ", "*)"}], "\[IndentingNewLine]", 
+               
+               RowBox[{"winningProbability", "*=", 
+                RowBox[{"1", "/", 
+                 RowBox[{"(", 
+                  RowBox[{"i", "+", "1"}], ")"}]}]}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"(*", " ", "Red", " ", "*)"}], "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"winningProbability", "*=", 
+                 RowBox[{"i", "/", 
+                  RowBox[{"(", 
+                   RowBox[{"i", "+", "1"}], ")"}]}]}], ";"}]}], 
+              "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"totalWinningProbability", "+=", "winningProbability"}], 
+          ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "totalWinningProbability", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"totalLosingProbability", "=", 
+     RowBox[{"1", "-", "totalWinningProbability"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"maximumBankerLost", "=", 
+     RowBox[{"Floor", "[", 
+      RowBox[{"totalLosingProbability", "/", "totalWinningProbability"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"maximumPrizeFund", "=", 
+     RowBox[{"maximumBankerLost", "+", "1"}]}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"Print", "[", "maximumPrizeFund", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564843152909855*^9, 3.564843336150038*^9}, {
+  3.56484337405404*^9, 3.5648435410934668`*^9}, {3.564843575572549*^9, 
+  3.564843727169341*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FractionBox["9219406943", "20922789888000"]], "Print",
+ CellChangeTimes->{
+  3.564843541598412*^9, {3.5648435806009893`*^9, 3.564843618572801*^9}, {
+   3.5648436890465384`*^9, 3.564843728895158*^9}}],
+
+Cell[BoxData["2269"], "Print",
+ CellChangeTimes->{
+  3.564843541598412*^9, {3.5648435806009893`*^9, 3.564843618572801*^9}, {
+   3.5648436890465384`*^9, 3.564843728896002*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{165, Automatic}, {-17, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 247, 12, 181, "Text"],
+Cell[CellGroupData[{
+Cell[829, 36, 3729, 91, 392, "Input"],
+Cell[CellGroupData[{
+Cell[4583, 131, 214, 4, 40, "Print"],
+Cell[4800, 137, 175, 3, 21, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

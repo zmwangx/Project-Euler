@@ -1,0 +1,115 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3281,        105]
+NotebookOptionsPosition[      2911,         87]
+NotebookOutlinePosition[      3274,        103]
+CellTagsIndexPosition[      3231,        100]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl108.nb\nPrbl108\nProject Euler\nCreated by Zhiming Wang on 12/17/12.\n\
+------------------------------------\nAlgorithm:\nLinear search. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"x", "-", "n"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"y", "-", "n"}], ")"}]}], "=", 
+    SuperscriptBox["n", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " yields all we need.\n----------------------------------------------------\n\
+Answer: 180180\n"
+}], "Text",
+ CellChangeTimes->{{3.564803084501637*^9, 3.564803188020022*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kExpectation", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Functions", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"nDivisors", "[", "n_", "]"}], ":=", 
+     RowBox[{"DivisorSigma", "[", 
+      RowBox[{"0", ",", "n"}], "]"}]}], ";"}], " ", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{"True", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"nSolutions", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"nDivisors", "[", 
+            RowBox[{"n", "^", "2"}], "]"}], "+", "1"}], ")"}], "/", "2"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"nSolutions", ">", "kExpectation"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", "n", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"++", "n"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5648028258177032`*^9, 3.56480305889467*^9}}],
+
+Cell[BoxData["180180"], "Print",
+ CellChangeTimes->{
+  3.56480301348527*^9, {3.564803048796372*^9, 3.564803062950561*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{263, Automatic}, {-228, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 596, 16, 184, "Text"],
+Cell[CellGroupData[{
+Cell[1178, 40, 1592, 40, 253, "Input"],
+Cell[2773, 82, 122, 2, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

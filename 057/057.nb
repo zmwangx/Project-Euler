@@ -1,0 +1,124 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3499,        114]
+NotebookOptionsPosition[      3133,         96]
+NotebookOutlinePosition[      3494,        112]
+CellTagsIndexPosition[      3451,        109]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl057.nb
+Prbl057
+Project Euler
+Created by Zhiming Wang on 12/09/12.
+------------------------------------
+Algorithm:
+Brute force.
+------------
+Answer: 153
+\
+\>", "Text",
+ CellChangeTimes->{{3.564062729928837*^9, 3.564062788993619*^9}, {
+  3.56406340629213*^9, 3.564063407018958*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kNumber", "=", 
+     RowBox[{"Sqrt", "[", "2", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kRange", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nNotTheSameLength", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"continuedFractionList", "=", 
+     RowBox[{"ContinuedFraction", "[", 
+      RowBox[{"kNumber", ",", "kRange"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", "kRange"}], ",", 
+      RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"approximation", "=", 
+        RowBox[{"FromContinuedFraction", "[", 
+         RowBox[{"continuedFractionList", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ";;", "i"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"numeratorLength", "=", 
+        RowBox[{"IntegerLength", "[", 
+         RowBox[{"Numerator", "[", "approximation", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"denominatorLength", "=", 
+        RowBox[{"IntegerLength", "[", 
+         RowBox[{"Denominator", "[", "approximation", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"numeratorLength", ">", "denominatorLength"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"++", "nNotTheSameLength"}], ";"}]}], "\[IndentingNewLine]",
+         "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "nNotTheSameLength", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5640628045547113`*^9, 3.5640629523907948`*^9}, {
+  3.5640630193580437`*^9, 3.564063388864634*^9}}],
+
+Cell[BoxData["153"], "Print",
+ CellChangeTimes->{{3.564063276044883*^9, 3.5640633904938717`*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{122, Automatic}, {22, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 294, 13, 181, "Text"],
+Cell[CellGroupData[{
+Cell[876, 37, 2141, 53, 252, "Input"],
+Cell[3020, 92, 97, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

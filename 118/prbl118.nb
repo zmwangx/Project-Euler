@@ -1,0 +1,130 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4082,        121]
+NotebookOptionsPosition[      3751,        105]
+NotebookOutlinePosition[      4109,        121]
+CellTagsIndexPosition[      4066,        118]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl118.nb
+Prbl118
+Project Euler
+Created by Zhiming Wang on 12/23/12.
+------------------------------------
+Algorithm:
+Exhaust all possible divisions.
+-------------------------------
+Answer: 44680
+\
+\>", "Text",
+ CellChangeTimes->{{3.565277008587303*^9, 3.565277058360626*^9}, {
+  3.5652808861608753`*^9, 3.565280886828162*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<Documents/02Programming/Projects/ProjectEuler/Mathematica/Prbl118\>\"\
+", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.565275484960676*^9, 3.5652755110873528`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"subsets", "=", 
+   RowBox[{"Subsets", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", 
+      "8", ",", "9"}], "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "subsets", "]"}]}], ",", 
+    RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"subset", "=", 
+      RowBox[{"subsets", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"permutations", "=", 
+      RowBox[{"Permutations", "[", "subset", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"primeCount", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"j", "=", "1"}], ",", 
+       RowBox[{"j", "\[LessEqual]", 
+        RowBox[{"Length", "[", "permutations", "]"}]}], ",", 
+       RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"permutation", "=", 
+         RowBox[{"permutations", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"potentialPrime", "=", 
+         RowBox[{"FromDigits", "[", "permutation", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"PrimeQ", "[", "potentialPrime", "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"++", "primeCount"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"FromDigits", "[", "subset", "]"}], ",", "primeCount"}], 
+       "}"}], ">>>", "\"\<prbl118.txt\>\""}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.565275181032056*^9, 3.565275209898542*^9}, {
+  3.56527529860553*^9, 3.565275420205042*^9}, {3.565275482737961*^9, 
+  3.565275483767144*^9}, {3.5652755579658947`*^9, 3.565275576019824*^9}, {
+  3.565275964957896*^9, 3.565276089754778*^9}, {3.5652761282791233`*^9, 
+  3.5652761565747557`*^9}, {3.565276203644568*^9, 3.5652762372484407`*^9}, {
+  3.565276298649584*^9, 3.5652763732094717`*^9}, {3.565276417847014*^9, 
+  3.565276512427795*^9}, {3.5652765467425203`*^9, 3.56527658981363*^9}, {
+  3.5652766797493963`*^9, 3.5652767899107723`*^9}, {3.5652768377770357`*^9, 
+  3.565276841985342*^9}}]
+},
+WindowSize->{740, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 337, 13, 181, "Text"],
+Cell[897, 35, 232, 6, 27, "Input"],
+Cell[1132, 43, 2615, 60, 224, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

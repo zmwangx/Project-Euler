@@ -1,0 +1,197 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5780,        188]
+NotebookOptionsPosition[      5411,        170]
+NotebookOutlinePosition[      5772,        186]
+CellTagsIndexPosition[      5729,        183]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl144.nb\nPrbl144\nProject Euler\nCreated by Zhiming Wang on 12/18/12.\n\
+------------------------------------\nAlgorithm:\nFor input (s, x, y) (s is \
+the slope of in beam, (x, y) is where the in beam hit the surface), \nthe \
+next phase of (s, x, y) is\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"t", "=", 
+     FractionBox[
+      FractionBox["y", 
+       RowBox[{"2", "x"}]], 
+      RowBox[{"1", "-", 
+       FractionBox[
+        SuperscriptBox["y", "2"], 
+        RowBox[{"16", 
+         SuperscriptBox["x", "2"]}]]}]]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"s", "'"}], "=", 
+     FractionBox[
+      RowBox[{"t", "-", "s"}], 
+      RowBox[{"1", "+", 
+       RowBox[{"t", " ", "s"}]}]]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"x", "'"}], "=", 
+     FractionBox[
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"s", "'"}], ")"}], "2"], "-", "4"}], ")"}], "x"}], "-", 
+       RowBox[{"2", 
+        RowBox[{"s", "'"}], " ", "y"}]}], 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"s", "'"}], ")"}], "2"], "+", "4"}]]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"y", "'"}], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "8"}], 
+         RowBox[{"s", "'"}], "x"}], "-", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"s", "'"}], ")"}], "2"], "-", "4"}], ")"}], "y"}]}], 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"s", "'"}], ")"}], "2"], "+", "4"}]], "."}]}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n--------------------\nAnswer: 354\n"
+}], "Text",
+ CellChangeTimes->{{3.564845703580522*^9, 3.564845977256033*^9}, {
+  3.564846694352029*^9, 3.564846694771997*^9}, {3.564847068582594*^9, 
+  3.564847069302442*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"newX", "=", "1.4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"newY", "=", 
+   RowBox[{"-", "9.6"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"newS", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"10.1", "-", "newY"}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{"0.0", "-", "newX"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nBounces", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"newY", ">", "0"}], "&&", 
+        RowBox[{"newX", ">", 
+         RowBox[{"-", "0.01"}]}], "&&", 
+        RowBox[{"newX", "<", "0.01"}]}], ")"}]}], ",", "\[IndentingNewLine]", 
+     
+     RowBox[{
+      RowBox[{"++", "nBounces"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"x", "=", "newX"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"y", "=", "newY"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"s", "=", "newS"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"temp", "=", 
+       FractionBox[
+        FractionBox["y", 
+         RowBox[{"2", "x"}]], 
+        RowBox[{"1", "-", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          RowBox[{"16", 
+           SuperscriptBox["x", "2"]}]]}]]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"newS", "=", 
+       FractionBox[
+        RowBox[{"temp", "-", "s"}], 
+        RowBox[{"1", "+", 
+         RowBox[{"temp", "*", "s"}]}]]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"newX", "=", 
+       FractionBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["newS", "2"], "-", "4"}], ")"}], "x"}], "-", 
+         RowBox[{"2", "newS", " ", "y"}]}], 
+        RowBox[{
+         SuperscriptBox["newS", "2"], "+", "4"}]]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newY", "=", 
+       FractionBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "8"}], "newS", " ", "x"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["newS", "2"], "-", "4"}], ")"}], "y"}]}], 
+        RowBox[{
+         SuperscriptBox["newS", "2"], "+", "4"}]]}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "nBounces", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.564846068217719*^9, 3.564846346681284*^9}, {
+  3.564846503326995*^9, 3.564846549394796*^9}, {3.5648466348612347`*^9, 
+  3.564846674673503*^9}, {3.564846736197969*^9, 3.564846743156255*^9}, {
+  3.5648468189262657`*^9, 3.564846880989394*^9}, {3.564847005286371*^9, 
+  3.56484706209461*^9}}],
+
+Cell[BoxData["354"], "Print",
+ CellChangeTimes->{{3.5648470481332684`*^9, 3.5648470627021627`*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{228, Automatic}, {19, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 2019, 64, 360, "Text"],
+Cell[CellGroupData[{
+Cell[2601, 88, 2692, 76, 384, "Input"],
+Cell[5296, 166, 99, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

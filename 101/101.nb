@@ -1,0 +1,147 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4486,        138]
+NotebookOptionsPosition[      4121,        120]
+NotebookOutlinePosition[      4479,        136]
+CellTagsIndexPosition[      4436,        133]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl101.nb
+Prbl101
+Project Euler
+Created by Zhiming Wang on 12/16/12.
+------------------------------------
+Algorithm:
+Lagrange interpolating formula.
+-------------------------------
+Answer: 37076114526
+\
+\>", "Text",
+ CellChangeTimes->{{3.564686636357341*^9, 3.564686694449593*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kGeneratingFunction", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", "#", "+", 
+        RowBox[{"#", "^", "2"}], "-", 
+        RowBox[{"#", "^", "3"}], "+", 
+        RowBox[{"#", "^", "4"}], "-", 
+        RowBox[{"#", "^", "5"}], "+", 
+        RowBox[{"#", "^", "6"}], "-", 
+        RowBox[{"#", "^", "7"}], "+", 
+        RowBox[{"#", "^", "8"}], "-", 
+        RowBox[{"#", "^", "9"}], "+", 
+        RowBox[{"#", "^", "10"}]}], ")"}], "&"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Functions", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"optimumPolynomial", "[", 
+      RowBox[{"u_", ",", "k_", ",", "n_"}], "]"}], ":=", 
+     RowBox[{"Expand", "[", "\[IndentingNewLine]", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Product", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"j", "\[NotEqual]", "i"}], ",", 
+               RowBox[{"n", "-", "j"}], ",", "1"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "k"}], "}"}]}], "]"}], "/", 
+           RowBox[{"Product", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"j", "\[NotEqual]", "i"}], ",", 
+               RowBox[{"i", "-", "j"}], ",", "1"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "k"}], "}"}]}], "]"}]}], ")"}], "*", 
+         RowBox[{"u", "[", "i", "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "k"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sum", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"k", "=", "1"}], ",", 
+      RowBox[{"k", "\[LessEqual]", 
+       RowBox[{"Exponent", "[", 
+        RowBox[{
+         RowBox[{"kGeneratingFunction", "[", "x", "]"}], ",", "x"}], "]"}]}], 
+      ",", 
+      RowBox[{"++", "k"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"sum", "+=", 
+        RowBox[{"optimumPolynomial", "[", 
+         RowBox[{"kGeneratingFunction", ",", "k", ",", 
+          RowBox[{"k", "+", "1"}]}], "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sum", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564685668686891*^9, 3.564685767013145*^9}, {
+  3.5646858334479523`*^9, 3.56468586193484*^9}, {3.5646859030990667`*^9, 
+  3.564686022188952*^9}, {3.564686056423221*^9, 3.564686065513639*^9}, {
+  3.564686416489005*^9, 3.564686535518818*^9}, {3.564686573381151*^9, 
+  3.564686598997964*^9}}],
+
+Cell[BoxData["37076114526"], "Print",
+ CellChangeTimes->{{3.5646865152201157`*^9, 3.5646865444148703`*^9}, {
+  3.564686589418284*^9, 3.564686599763074*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 292, 12, 181, "Text"],
+Cell[CellGroupData[{
+Cell[874, 36, 3072, 77, 225, "Input"],
+Cell[3949, 115, 156, 2, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

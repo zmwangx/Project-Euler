@@ -1,0 +1,145 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3864,        136]
+NotebookOptionsPosition[      3495,        118]
+NotebookOutlinePosition[      3856,        134]
+CellTagsIndexPosition[      3813,        131]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl116.nb\nPrbl116\nProject Euler\nCreated by Zhiming Wang on 12/22/12.\n\
+------------------------------------\nAlgorithm:\nThe formula is easy to \
+deduce:\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Sum]", 
+     RowBox[{"(", GridBox[{
+        {
+         RowBox[{"n", "-", "i"}]},
+        {"i"}
+       }], ")"}]}], " ", "+", " ", 
+    RowBox[{"\[Sum]", 
+     RowBox[{"(", GridBox[{
+        {
+         RowBox[{"n", "-", 
+          RowBox[{"2", "i"}]}]},
+        {"i"}
+       }], ")"}]}], " ", "+", " ", 
+    RowBox[{"\[Sum]", 
+     RowBox[{
+      RowBox[{"(", GridBox[{
+         {
+          RowBox[{"n", "-", 
+           RowBox[{"3", "i"}]}]},
+         {"i"}
+        }], ")"}], "."}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n-----------------------------------------\nAnswer: ",
+ "20492570929",
+ "\n"
+}], "Text",
+ CellChangeTimes->{{3.56519993970153*^9, 3.565200135686882*^9}, {
+  3.565200457667138*^9, 3.565200458397393*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kN", " ", "=", " ", "50"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nRed", "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"kN", "-", "i"}], ",", "i"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Floor", "[", 
+          RowBox[{"kN", "/", "2"}], "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nGreen", "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"kN", "-", 
+          RowBox[{"2", "*", "i"}]}], ",", "i"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Floor", "[", 
+          RowBox[{"kN", "/", "3"}], "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nBlue", "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"kN", "-", 
+          RowBox[{"3", "*", "i"}]}], ",", "i"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Floor", "[", 
+          RowBox[{"kN", "/", "4"}], "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"nRed", "+", "nGreen", "+", "nBlue"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.56520016231111*^9, 3.565200317793887*^9}, {
+  3.565200369329153*^9, 3.565200384375181*^9}}],
+
+Cell[BoxData["20492570929"], "Print",
+ CellChangeTimes->{
+  3.56520032100679*^9, {3.565200376755533*^9, 3.5652003850547323`*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{Automatic, 128}, {38, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 982, 34, 229, "Text"],
+Cell[CellGroupData[{
+Cell[1564, 58, 1783, 53, 140, "Input"],
+Cell[3350, 113, 129, 2, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

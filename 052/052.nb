@@ -1,0 +1,133 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3920,        123]
+NotebookOptionsPosition[      3554,        105]
+NotebookOutlinePosition[      3914,        121]
+CellTagsIndexPosition[      3871,        118]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl052.nb
+Prbl052
+Project Euler
+Created by Zhiming Wang on 12/08/12.
+------------------------------------
+Algorithm:
+Brute force search.
+-------------------
+Answer: 142857
+\
+\>", "Text",
+ CellChangeTimes->{{3.563986934406734*^9, 3.563986948296973*^9}, {
+  3.563986980412924*^9, 3.563987009539605*^9}, {3.563987464152121*^9, 
+  3.563987465599566*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{"True", ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"++", "n"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"digits1", "=", 
+      RowBox[{"Sort", "[", 
+       RowBox[{"IntegerDigits", "[", "n", "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"digits2", "=", 
+      RowBox[{"Sort", "[", 
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"n", "*", "2"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"digits3", "=", 
+      RowBox[{"Sort", "[", 
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"n", "*", "3"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"digits4", "=", 
+      RowBox[{"Sort", "[", 
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"n", "*", "4"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"digits5", "=", 
+      RowBox[{"Sort", "[", 
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"n", "*", "5"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"digits6", "=", 
+      RowBox[{"Sort", "[", 
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"n", "*", "6"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"digits1", "\[Equal]", "digits2"}], "&&", 
+        RowBox[{"digits2", "\[Equal]", "digits3"}], "&&", 
+        RowBox[{"digits3", "\[Equal]", "digits4"}], "&&", 
+        RowBox[{"digits4", "\[Equal]", "digits5"}], "&&", 
+        "\[IndentingNewLine]", 
+        RowBox[{"digits5", "\[Equal]", "digits6"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", 
+           RowBox[{"n", "*", "2"}], ",", 
+           RowBox[{"n", "*", "3"}], ",", 
+           RowBox[{"n", "*", "4"}], ",", 
+           RowBox[{"n", "*", "5"}], ",", 
+           RowBox[{"n", "*", "6"}]}], "}"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+     ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.563987013135251*^9, 3.563987218299333*^9}, {
+  3.563987250088237*^9, 3.5639874369221582`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "142857", ",", "285714", ",", "428571", ",", "571428", ",", "714285", ",", 
+   "857142"}], "}"}]], "Print",
+ CellChangeTimes->{{3.5639873895977993`*^9, 3.563987440785963*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{68, Automatic}, {Automatic, 44}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 361, 14, 181, "Text"],
+Cell[CellGroupData[{
+Cell[943, 38, 2375, 57, 238, "Input"],
+Cell[3321, 97, 217, 5, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

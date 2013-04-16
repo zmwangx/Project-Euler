@@ -1,0 +1,154 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4967,        144]
+NotebookOptionsPosition[      4597,        126]
+NotebookOutlinePosition[      4958,        142]
+CellTagsIndexPosition[      4915,        139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl058.nb\nPrbl058\nProject Euler\nCreated by Zhiming Wang on 12/09/12.\n\
+------------------------------------\nAlgorithm:\[LineSeparator]Note that the \
+corners of a ",
+ StyleBox["(2n+1)*(2n+1)", "Input"],
+ " square spiral are ",
+ StyleBox["4n^2-2n+1", "Input"],
+ ", ",
+ StyleBox["4n^2+1", "Input"],
+ ", ",
+ StyleBox["4n^2+2n+1", "Input"],
+ ", and \n",
+ StyleBox["(2n+1)^2", "Input"],
+ ".\n---------\nAnswer:\n"
+}], "Text",
+ CellChangeTimes->{{3.564063635753043*^9, 3.564063824620961*^9}, {
+  3.56406400644053*^9, 3.564064041419627*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kExpectation", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", "0"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Used", " ", "for", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "n"}], "+", "1"}], ")"}], "*", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "n"}], "+", "1"}], ")"}], "."}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"nDiagonalEntries", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimeDiagonalEntries", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{"True", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"++", "n"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"nDiagonalEntries", "+=", "4"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"nPrimeDiagonalEntries", "+=", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Boole", "[", 
+          RowBox[{"PrimeQ", "[", 
+           RowBox[{
+            RowBox[{"4", 
+             RowBox[{"n", "^", "2"}]}], "-", 
+            RowBox[{"2", "n"}], "+", "1"}], "]"}], "]"}], "+", 
+         RowBox[{"Boole", "[", 
+          RowBox[{"PrimeQ", "[", 
+           RowBox[{
+            RowBox[{"4", 
+             RowBox[{"n", "^", "2"}]}], "+", "1"}], "]"}], "]"}], "+", 
+         RowBox[{"Boole", "[", 
+          RowBox[{"PrimeQ", "[", 
+           RowBox[{
+            RowBox[{"4", 
+             RowBox[{"n", "^", "2"}]}], "+", 
+            RowBox[{"2", "n"}], "+", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"nPrimeDiagonalEntries", "/", "nDiagonalEntries"}], "<", 
+          "kExpectation"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"2", "n"}], "+", "1"}], ",", "\"\<\[Cross]\>\"", ",", 
+            RowBox[{
+             RowBox[{"2", "n"}], "+", "1"}], ",", "\"\<: \>\"", ",", 
+            "nPrimeDiagonalEntries", ",", "\"\</\>\"", ",", 
+            "nDiagonalEntries"}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564063832648355*^9, 3.564063997616908*^9}, {
+  3.564064049968464*^9, 3.564064262950046*^9}, {3.56406434529145*^9, 
+  3.5640643837051163`*^9}, {3.564064434834996*^9, 3.5640644586620083`*^9}, {
+  3.564064559059662*^9, 3.564064561571542*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "26241", "\[InvisibleSpace]", "\<\"\[Cross]\"\>", "\[InvisibleSpace]", 
+   "26241", "\[InvisibleSpace]", "\<\": \"\>", "\[InvisibleSpace]", "5248", 
+   "\[InvisibleSpace]", "\<\"/\"\>", "\[InvisibleSpace]", "52481"}],
+  SequenceForm[26241, "\[Cross]", 26241, ": ", 5248, "/", 52481],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.5640642665619783`*^9, 3.564064357923934*^9, 3.564064387974903*^9, {
+   3.5640644400443897`*^9, 3.564064459299821*^9}, {3.564064563410866*^9, 
+   3.564064567743764*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{108, Automatic}, {Automatic, 24}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 558, 16, 198, "Text"],
+Cell[CellGroupData[{
+Cell[1140, 40, 2885, 70, 266, "Input"],
+Cell[4028, 112, 553, 11, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

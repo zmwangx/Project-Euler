@@ -1,0 +1,131 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3900,        121]
+NotebookOptionsPosition[      3535,        103]
+NotebookOutlinePosition[      3895,        119]
+CellTagsIndexPosition[      3852,        116]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl055.nb
+Prbl055
+Project Euler
+Created by Zhiming Wang on 12/09/12.
+------------------------------------
+Algorithm:
+Brute force.
+------------
+Answer: 249
+\
+\>", "Text",
+ CellChangeTimes->{{3.564060368109757*^9, 3.564060416228463*^9}, {
+  3.564061440857273*^9, 3.5640614417276363`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kRange", "=", "10000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kMaxIterations", "=", "50"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nLychrelNumbers", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"n", "=", "1"}], ",", 
+      RowBox[{"n", "<", "kRange"}], ",", 
+      RowBox[{"++", "n"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"step", "=", "n"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"nIterations", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"nIterations", "<=", "kMaxIterations"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"stepReverse", "=", 
+           RowBox[{"ToExpression", "[", 
+            RowBox[{"StringReverse", "[", 
+             RowBox[{"ToString", "[", "step", "]"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"step", "\[Equal]", "stepReverse"}], "&&", 
+             RowBox[{"nIterations", "\[NotEqual]", "0"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"step", "=", 
+           RowBox[{"step", "+", "stepReverse"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"++", "nIterations"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"nIterations", ">", "kMaxIterations"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"++", "nLychrelNumbers"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "nLychrelNumbers", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564060363325653*^9, 3.564060365300783*^9}, {
+  3.564060575721044*^9, 3.56406068216501*^9}, {3.564060739373343*^9, 
+  3.564060767372982*^9}, {3.564060812590041*^9, 3.564061162253323*^9}, {
+  3.5640612055696507`*^9, 3.5640613478124743`*^9}}],
+
+Cell[BoxData["249"], "Print",
+ CellChangeTimes->{3.564061349739311*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{84, Automatic}, {16, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 297, 13, 181, "Text"],
+Cell[CellGroupData[{
+Cell[879, 37, 2566, 60, 336, "Input"],
+Cell[3448, 99, 71, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

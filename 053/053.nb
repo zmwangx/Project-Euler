@@ -1,0 +1,102 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2542,         92]
+NotebookOptionsPosition[      2176,         74]
+NotebookOutlinePosition[      2537,         90]
+CellTagsIndexPosition[      2494,         87]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl053.nb
+Prbl53
+Project Euler
+Created by Zhiming Wang on 12/08/12.
+------------------------------------
+Algorithm:
+Brute force.
+------------
+Answer: 4075
+\
+\>", "Text",
+ CellChangeTimes->{{3.564002629436982*^9, 3.564002695061007*^9}, {
+  3.564002881274179*^9, 3.564002882208872*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"counter", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"n", "=", "1"}], ",", 
+    RowBox[{"n", "\[LessEqual]", "100"}], ",", 
+    RowBox[{"++", "n"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"r", "=", "0"}], ",", 
+       RowBox[{"r", "\[LessEqual]", "n"}], ",", 
+       RowBox[{"++", "r"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Binomial", "[", 
+            RowBox[{"n", ",", "r"}], "]"}], "\[GreaterEqual]", "1000000"}], 
+          ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"++", "counter"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+        ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]",
+    "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "counter", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.564002621041129*^9, 3.564002623075317*^9}, {
+  3.564002720885285*^9, 3.564002849240692*^9}}],
+
+Cell[BoxData["4075"], "Print",
+ CellChangeTimes->{3.564002850805023*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{113, Automatic}, {Automatic, 38}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 295, 13, 181, "Text"],
+Cell[CellGroupData[{
+Cell[877, 37, 1208, 31, 154, "Input"],
+Cell[2088, 70, 72, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

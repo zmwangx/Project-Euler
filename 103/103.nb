@@ -1,0 +1,312 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     12095,        303]
+NotebookOptionsPosition[     11613,        281]
+NotebookOutlinePosition[     11974,        297]
+CellTagsIndexPosition[     11931,        294]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl103.nb
+Prbl103
+Project Euler
+Created by Zhiming Wang on 12/17/12.
+------------------------------------
+Algorithm:
+Find near optimal solution by purturbation (inspired by \
+http://www.mathblog.dk/project-euler-103-special-subset-sum/). Not rigorous.
+---------------------------------------------
+Answer: 20313839404245
+\
+\>", "Text",
+ CellChangeTimes->{{3.564767833321313*^9, 3.564767927628727*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"beginTime", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kNElements", "=", "7"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kBaseSet", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "20", ",", "31", ",", "38", ",", "39", ",", "40", ",", "42", ",", 
+       "45"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kBaseSum", "=", 
+     RowBox[{"Total", "[", "kBaseSet", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"kPerturbationRange", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"minSet", "=", "kBaseSet"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"minSum", "=", "kBaseSum"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"perturbationNumber", "=", "0"}], ",", 
+      RowBox[{"perturbationNumber", "\[LessEqual]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", "*", "kPerturbationRange"}], "+", "1"}], ")"}], "^", 
+         "kNElements"}], "-", "1"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"++", "perturbationNumber"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"perturbationSet", "=", 
+        RowBox[{
+         RowBox[{"IntegerDigits", "[", 
+          RowBox[{"perturbationNumber", ",", 
+           RowBox[{
+            RowBox[{"2", "*", "kPerturbationRange"}], "+", "1"}], ",", 
+           "kNElements"}], "]"}], "-", 
+         RowBox[{"Array", "[", 
+          RowBox[{
+           RowBox[{"kPerturbationRange", "&"}], ",", "kNElements"}], 
+          "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"set", "=", 
+        RowBox[{"kBaseSet", "+", "perturbationSet"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", "set", "]"}], ">=", "minSum"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Continue", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"orderIsPreserved", "=", "True"}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"index", "=", "1"}], ",", 
+         RowBox[{"index", "<", "kNElements"}], ",", 
+         RowBox[{"++", "index"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"set", "[", 
+              RowBox[{"[", "index", "]"}], "]"}], "\[GreaterEqual]", 
+             RowBox[{"set", "[", 
+              RowBox[{"[", 
+               RowBox[{"index", "+", "1"}], "]"}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "Set", " ", "is", " ", "no", " ", "longer", " ", "strictly", " ", 
+              RowBox[{"increasing", "."}]}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"orderIsPreserved", "=", "False"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"!", "orderIsPreserved"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Continue", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"isSpecialSumSet", "=", "True"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Test", " ", "comparison", " ", "property"}], " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"subsetLength", "=", "1"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"subsetLength", "*", "2"}], "+", "1"}], "\[LessEqual]", 
+          "kNElements"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"max", "=", 
+           RowBox[{"Total", "[", 
+            RowBox[{"set", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"kNElements", "-", "subsetLength", "+", "1"}], ";;", 
+               "kNElements"}], "]"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"min", "=", 
+           RowBox[{"Total", "[", 
+            RowBox[{"set", "[", 
+             RowBox[{"[", 
+              RowBox[{"1", ";;", 
+               RowBox[{"subsetLength", "+", "1"}]}], "]"}], "]"}], "]"}]}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"max", ">=", "min"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"isSpecialSumSet", "=", "False"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"++", "subsetLength"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"!", "isSpecialSumSet"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Continue", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Test", " ", "equality", " ", "property"}], " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"subsets", "=", 
+        RowBox[{"Subsets", "[", 
+         RowBox[{"set", ",", 
+          RowBox[{"Floor", "[", 
+           RowBox[{"kNElements", "/", "2"}], "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"nSubsets", "=", 
+        RowBox[{"Length", "[", "subsets", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"subsetSums", "=", 
+        RowBox[{"Array", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Total", "[", 
+            RowBox[{"subsets", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "]"}], "&"}], ",", "nSubsets"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", 
+           RowBox[{"DeleteDuplicates", "[", "subsetSums", "]"}], "]"}], "==", 
+          "nSubsets"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Special", " ", "sum", " ", "set", " ", 
+           RowBox[{"found", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"minSet", "=", "set"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "minSet", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "minSum", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"endTime", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Took \>\"", ",", 
+      RowBox[{"endTime", "-", "beginTime"}], ",", 
+      "\"\< seconds to complete.\>\""}], "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564763420155919*^9, 3.564763527554372*^9}, {
+  3.5647635789512463`*^9, 3.564763607169093*^9}, {3.56476370653148*^9, 
+  3.564763707091607*^9}, {3.564764869653405*^9, 3.564764969552801*^9}, {
+  3.564765002004385*^9, 3.56476517561165*^9}, {3.564765233931601*^9, 
+  3.56476533037873*^9}, {3.564765362097973*^9, 3.564765472390032*^9}, {
+  3.5647655055838737`*^9, 3.564765620729186*^9}, {3.5647656723804283`*^9, 
+  3.56476567982873*^9}, {3.564765712891148*^9, 3.564765741658064*^9}, {
+  3.5647658034487057`*^9, 3.564765805399322*^9}, {3.564765851019012*^9, 
+  3.564766048220489*^9}, {3.564766142464357*^9, 3.564766169352543*^9}, {
+  3.56476621867275*^9, 3.564766235891902*^9}, {3.564766270255555*^9, 
+  3.56476628773835*^9}, {3.564766386652524*^9, 3.564766426555889*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "20", ",", "31", ",", "38", ",", "39", ",", "40", ",", "42", ",", "45"}], 
+  "}"}]], "Print",
+ CellChangeTimes->{
+  3.564763528138719*^9, {3.5647635917531013`*^9, 3.564763630419537*^9}, {
+   3.564765598046537*^9, 3.564765621281898*^9}, 3.564765680163344*^9, {
+   3.5647657142785683`*^9, 3.564765742156201*^9}, 3.56476580615414*^9, 
+   3.564765873839384*^9, 3.564765978769136*^9, 3.564766049882329*^9, {
+   3.564766148195416*^9, 3.564766170283101*^9}, {3.564766221209598*^9, 
+   3.564766239993691*^9}, {3.564766279580489*^9, 3.5647662912746677`*^9}, {
+   3.564766387496868*^9, 3.5647663993730097`*^9}, 3.5647665483366947`*^9}],
+
+Cell[BoxData["255"], "Print",
+ CellChangeTimes->{
+  3.564763528138719*^9, {3.5647635917531013`*^9, 3.564763630419537*^9}, {
+   3.564765598046537*^9, 3.564765621281898*^9}, 3.564765680163344*^9, {
+   3.5647657142785683`*^9, 3.564765742156201*^9}, 3.56476580615414*^9, 
+   3.564765873839384*^9, 3.564765978769136*^9, 3.564766049882329*^9, {
+   3.564766148195416*^9, 3.564766170283101*^9}, {3.564766221209598*^9, 
+   3.564766239993691*^9}, {3.564766279580489*^9, 3.5647662912746677`*^9}, {
+   3.564766387496868*^9, 3.5647663993730097`*^9}, 3.564766548337512*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Took \"\>", "\[InvisibleSpace]", 
+   "120.209298`8.531483054456537", 
+   "\[InvisibleSpace]", "\<\" seconds to complete.\"\>"}],
+  SequenceForm["Took ", 120.209298`8.531483054456537, " seconds to complete."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.564763528138719*^9, {3.5647635917531013`*^9, 3.564763630419537*^9}, {
+   3.564765598046537*^9, 3.564765621281898*^9}, 3.564765680163344*^9, {
+   3.5647657142785683`*^9, 3.564765742156201*^9}, 3.56476580615414*^9, 
+   3.564765873839384*^9, 3.564765978769136*^9, 3.564766049882329*^9, {
+   3.564766148195416*^9, 3.564766170283101*^9}, {3.564766221209598*^9, 
+   3.564766239993691*^9}, {3.564766279580489*^9, 3.5647662912746677`*^9}, {
+   3.564766387496868*^9, 3.5647663993730097`*^9}, 3.564766548338346*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{190, Automatic}, {20, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 412, 13, 198, "Text"],
+Cell[CellGroupData[{
+Cell[994, 37, 8517, 198, 938, "Input"],
+Cell[CellGroupData[{
+Cell[9536, 239, 667, 12, 21, "Print"],
+Cell[10206, 253, 559, 8, 21, "Print"],
+Cell[10768, 263, 817, 14, 22, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

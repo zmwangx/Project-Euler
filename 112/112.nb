@@ -1,0 +1,312 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10160,        303]
+NotebookOptionsPosition[      9264,        268]
+NotebookOutlinePosition[      9626,        284]
+CellTagsIndexPosition[      9583,        281]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl112.nb
+Prbl112
+Project Euler
+Created by Zhiming Wang on 12/17/12.
+------------------------------------
+Algorithm:
+Fist use formula to overview and determine the range. Then since the range is \
+acceptable for exhaustion, use exhaustion to get the exact result.
+---------------------------------------------------
+Answer: 1587000
+\
+\>", "Text",
+ CellChangeTimes->{{3.5648003566549063`*^9, 3.5648004626204023`*^9}, {
+  3.5648020754837103`*^9, 3.564802099658402*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Function", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"numberOfKDigitBouncyNumbers", "[", "k_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"9", "*", 
+      RowBox[{"10", "^", 
+       RowBox[{"(", 
+        RowBox[{"k", "-", "1"}], ")"}]}]}], " ", "-", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"k", "+", "8"}], ",", "8"}], "]"}], "+", 
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"k", "+", "9"}], ",", "9"}], "]"}], "-", "10"}], ")"}]}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.564800491413721*^9, 3.5648006054738483`*^9}, {
+  3.5648016085906773`*^9, 3.564801609733584*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Percentage", " ", "of", " ", "bouncy", " ", "numbers", " ", 
+    RowBox[{"in", " ", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{"10", "^", "6"}]}], "]"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nBounciesNoGreaterThan10To6", "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"numberOfKDigitBouncyNumbers", "[", "n", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "6"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nBounciesNoGreaterThan10To6", "/", 
+     RowBox[{"10", "^", "6"}]}], " ", "//", " ", "N"}]}]}]], "Input",
+ CellChangeTimes->{{3.564800567823351*^9, 3.5648005703341312`*^9}, {
+  3.5648006113311663`*^9, 3.564800696197163*^9}, {3.5648007652743273`*^9, 
+  3.564800796676085*^9}, {3.56480132375825*^9, 3.564801375470622*^9}}],
+
+Cell[BoxData["0.987048`"], "Output",
+ CellChangeTimes->{{3.564800688212143*^9, 3.564800697408051*^9}, 
+   3.564800800031103*^9, {3.564801368784203*^9, 3.5648013762171392`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Percentage", " ", "of", " ", "bouncy", " ", "numbers", " ", 
+    RowBox[{"in", " ", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{"10", "^", "6"}]}], "]"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nBounciesNoGreaterThan10To7", "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"numberOfKDigitBouncyNumbers", "[", "n", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "7"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nBounciesNoGreaterThan10To7", "/", 
+     RowBox[{"10", "^", "7"}]}], " ", "//", " ", "N"}]}]}]], "Input",
+ CellChangeTimes->{{3.564800706440111*^9, 3.5648007082005453`*^9}, {
+  3.564800801941984*^9, 3.564800816210251*^9}, {3.56480138167194*^9, 
+  3.564801394779861*^9}}],
+
+Cell[BoxData["0.9969183`"], "Output",
+ CellChangeTimes->{3.5648007087020597`*^9, 3.564800817296185*^9, 
+  3.5648013953114223`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{" ", 
+     RowBox[{
+      RowBox[{
+      "Number", " ", "of", " ", "increasing", " ", "numbers", " ", "in", " ", 
+       "range", " ", "R"}], " ", "=", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"10", "^", "6"}], ",", " ", 
+        RowBox[{"2", "*", 
+         RowBox[{"10", "^", "6"}]}]}]}]}], "]"}], "."}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nIncreasingsInR", "=", 
+     RowBox[{"Binomial", "[", 
+      RowBox[{
+       RowBox[{"6", "+", "8"}], ",", "8"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "Number", " ", "of", " ", "decreasing", " ", "numbers", " ", "in", " ", 
+       "range", " ", 
+       RowBox[{"R", " ", "--"}], " ", "7"}], ":", " ", "1100000"}], ",", " ", 
+     "1110000", ",", " ", "1111000", ",", " ", "\[IndentingNewLine]", 
+     "1111100", ",", " ", "1111110", ",", " ", "1111111", ",", " ", 
+     "2000000."}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nDecreasingsInR", "=", "7"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Number", " ", "of", " ", "bouncy", " ", "numbers", " ", "in", " ", 
+     RowBox[{"R", ".", " ", "Note"}], " ", "that", " ", "1111111", " ", "is", 
+     " ", "both", " ", "increasing", " ", "and", " ", "\[IndentingNewLine]", 
+     RowBox[{"decreasing", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nBounciesInR", "=", 
+     RowBox[{
+      RowBox[{"10", "^", "6"}], "-", "nIncreasingsInR", "-", 
+      "nDecreasingsInR", "+", "1"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564800834416484*^9, 3.5648008519255333`*^9}, {
+  3.564800959230905*^9, 3.564801298111107*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nBounciesNoGreaterThanDouble10To6", "=", 
+   RowBox[{"nBounciesNoGreaterThan10To6", "+", "nBounciesInR"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nBounciesNoGreaterThanDouble10To6", "/", 
+   RowBox[{"(", 
+    RowBox[{"2", "*", 
+     RowBox[{"10", "^", "6"}]}], ")"}]}], "//", "N"}]}], "Input",
+ CellChangeTimes->{{3.5648013280152473`*^9, 3.564801335073206*^9}, {
+  3.5648014016850357`*^9, 3.564801432815336*^9}}],
+
+Cell[BoxData["0.9920195`"], "Output",
+ CellChangeTimes->{3.564801433400362*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"Therefore", ",", " ", 
+   RowBox[{
+   "the", " ", "number", " ", "we", " ", "want", " ", "to", " ", "compute", 
+    " ", "is", " ", "between", " ", 
+    RowBox[{"10", "^", "6"}], " ", "and", " ", "2", "*", 
+    RowBox[{"10", "^", "6."}], " ", "It", " ", "is", " ", "reasonable", " ", 
+    "to", " ", "make", " ", "such", " ", "an", " ", "exhaustion", " ", "with",
+     " ", "no", " ", "more", " ", "than", " ", 
+    RowBox[{"10", "^", "6"}], " ", 
+    RowBox[{"entries", "."}]}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.564801457200204*^9, 3.564801514417935*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Function", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"isBouncy", "[", "n_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"digits", ",", "sorted", ",", "reverselySorted"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"digits", "=", 
+        RowBox[{"IntegerDigits", "[", "n", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"sorted", "=", 
+        RowBox[{"Sort", "[", "digits", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"reverselySorted", "=", 
+        RowBox[{"Reverse", "[", "sorted", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"(", 
+           RowBox[{"digits", "\[Equal]", "sorted"}], ")"}]}], "&&", 
+         RowBox[{"!", 
+          RowBox[{"(", 
+           RowBox[{"digits", "\[Equal]", "reverselySorted"}], ")"}]}]}], 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.5648016131305017`*^9, 3.5648017148297157`*^9}, {
+  3.5648017684145737`*^9, 3.5648018660791473`*^9}, {3.564801993308453*^9, 
+  3.564801994100463*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", 
+   RowBox[{"10", "^", "6"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nBouncies", "=", "nBounciesNoGreaterThan10To6"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"nBouncies", "/", "n"}], "\[NotEqual]", "0.99"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"++", "n"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"isBouncy", "[", "n", "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"++", "nBouncies"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+     ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "n", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.564801914362809*^9, 3.5648020362297707`*^9}}],
+
+Cell[BoxData["1587000"], "Print",
+ CellChangeTimes->{{3.5648020434720592`*^9, 3.564802056916318*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.564802060479908*^9, 3.564802066768343*^9}}]
+},
+WindowSize->{740, 652},
+WindowMargins->{{127, Automatic}, {-22, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 478, 14, 198, "Text"],
+Cell[1038, 36, 735, 21, 42, "Input"],
+Cell[CellGroupData[{
+Cell[1798, 61, 886, 21, 56, "Input"],
+Cell[2687, 84, 176, 2, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2900, 91, 836, 21, 56, "Input"],
+Cell[3739, 114, 130, 2, 27, "Output"]
+}, Open  ]],
+Cell[3884, 119, 1786, 46, 126, "Input"],
+Cell[CellGroupData[{
+Cell[5695, 169, 466, 11, 42, "Input"],
+Cell[6164, 182, 79, 1, 27, "Output"]
+}, Open  ]],
+Cell[6258, 186, 616, 12, 42, "Input"],
+Cell[6877, 200, 1231, 30, 113, "Input"],
+Cell[CellGroupData[{
+Cell[8133, 234, 850, 23, 140, "Input"],
+Cell[8986, 259, 101, 1, 21, "Print"]
+}, Open  ]],
+Cell[9102, 263, 158, 3, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

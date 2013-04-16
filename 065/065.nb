@@ -1,0 +1,81 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2091,         72]
+NotebookOptionsPosition[      1727,         54]
+NotebookOutlinePosition[      2088,         70]
+CellTagsIndexPosition[      2045,         67]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl065.nb\nPrbl065\nProject Euler\nCreated by Zhiming Wang on 12/10/12.\n\
+------------------------------------\nAlgorithm:\n",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " built in functionality.\n-----------------------------------\nAnswer: 272\n"
+}], "Text",
+ CellChangeTimes->{{3.564157578571944*^9, 3.5641576485987864`*^9}, {
+  3.564157903757019*^9, 3.564157904396943*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"termNumber", "=", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Total", "[", 
+    RowBox[{"IntegerDigits", "[", 
+     RowBox[{"Numerator", "[", 
+      RowBox[{"Last", "[", 
+       RowBox[{"Convergents", "[", 
+        RowBox[{"E", ",", "termNumber"}], "]"}], "]"}], "]"}], "]"}], "]"}], 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.564157660531954*^9, 3.564157766947462*^9}, {
+  3.5641578339061213`*^9, 3.564157901505692*^9}}],
+
+Cell[BoxData["272"], "Print",
+ CellChangeTimes->{{3.564157867839879*^9, 3.564157877937929*^9}, 
+   3.564157917624058*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{Automatic, 106}, {14, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 404, 8, 181, "Text"],
+Cell[CellGroupData[{
+Cell[986, 32, 601, 15, 56, "Input"],
+Cell[1590, 49, 121, 2, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

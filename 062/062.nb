@@ -1,0 +1,253 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9333,        244]
+NotebookOptionsPosition[      8854,        222]
+NotebookOutlinePosition[      9214,        238]
+CellTagsIndexPosition[      9171,        235]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl062.nb
+Prbl062
+Project Euler
+Created by Zhiming Wang on 12/09/12.
+------------------------------------
+Algorithm:
+Convert every cube to minimum permutation form, then sort and scan over the \
+sorted list for five consecutive same values.
+-----------------------------
+Answer: 127035954683
+\
+\>", "Text",
+ CellChangeTimes->{{3.564113405275647*^9, 3.5641135053701363`*^9}, {
+  3.5641203932761602`*^9, 3.564120395804982*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kExpectedNumberOfSameEntries", "=", "5"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"beginTime", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cubeBase", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cubeLength", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"hasFound", "=", "False"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"foundCubeGroups", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{"!", "hasFound"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"For", " ", "a", " ", "particular", " ", "cubeLength"}], " ", 
+       "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"cube", "=", 
+        RowBox[{"cubeBase", "^", "3"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"minimumPermutations", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"IntegerLength", "[", "cube", "]"}], "\[Equal]", 
+          "cubeLength"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"minimumPermutation", "=", 
+           RowBox[{"FromDigits", "[", 
+            RowBox[{"Sort", "[", 
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"cube", ",", "10", ",", "cubeLength"}], "]"}], "]"}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"minimumPermutations", ",", 
+            RowBox[{"{", 
+             RowBox[{"minimumPermutation", ",", "cube"}], "}"}]}], "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"++", "cubeBase"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"cube", "=", 
+           RowBox[{"cubeBase", "^", "3"}]}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"minimumPermutations", "=", 
+        RowBox[{"SortBy", "[", 
+         RowBox[{"minimumPermutations", ",", "First"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Look", " ", "up"}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"i", "=", "1"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"i", "\[LessEqual]", 
+          RowBox[{"Length", "[", "minimumPermutations", "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"numberOfSameEntries", "=", "0"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"entryValue", "=", 
+           RowBox[{
+            RowBox[{"minimumPermutations", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"cubesWithSameEntryValue", "=", 
+           RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"While", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"i", "\[LessEqual]", 
+              RowBox[{"Length", "[", "minimumPermutations", "]"}]}], "&&", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"minimumPermutations", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "==", "entryValue"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"cubesWithSameEntryValue", ",", 
+               RowBox[{
+                RowBox[{"minimumPermutations", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"++", "numberOfSameEntries"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"++", "i"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+            "numberOfSameEntries", "\[Equal]", 
+             "kExpectedNumberOfSameEntries"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"foundCubeGroups", ",", "cubesWithSameEntryValue"}], 
+              "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"hasFound", "=", "True"}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{"hasFound", ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"++", "cubeLength"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "foundCubeGroups", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"endTime", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Took \>\"", ",", 
+      RowBox[{"endTime", "-", "beginTime"}], ",", 
+      "\"\< seconds to complete.\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdz1tI03EYxvH9t2ULV5QRrDKYFmOGSl2UkmAJ6qi5hQVmBhNGiY2o0Spk
+LVFMQQszkw7GOtBBGuaFbCoS2qhZsYyahAkqNkrWIgkPNCyxfX8XD5+b54X3
+SbGeOXRCLpPJ0uLByGDmmNQczVtOPT6LfdOfY9hwI2G9PO6uJpUe771azsUa
+zeZC3FcRMGDUYjKjWuG+iLrGQJ3oGStb8fxR723cXr7jkejPDXWg62PtsLgr
+7f2Otk/HZnBdu3kW3ZJ/ATedHM9WxD1t1+bg7m/Bm9h4xXUHr3b9cGP7e8tD
+bC2OPEHr421dqI06vXjBv8WHIYVrAGVJioDwuS6I+aE9w6jZMDeCb7/+ETqk
+xVFsC/4ew4jx+hR6HqwNY9aUeQZtvtR5zDx3+C+2PLULPdPPJGXc/Y55OaYX
+lSbi2e4BYWyxeitO/KzQY7WmOB2TO+QZaLi/MQuHuvXC1zZPLuY0H8nDtLa6
+AvTXqA14KqPEjNmVieVY//KXFS3Xiuyo7Empx4VRqQFX+3a24OUy1V38l3/J
+g66DBwaxrLAngOHxgNBbuyqELyadI9ikXfqCJZ3qCfygM4Zxza2qJbHP6VCu
+4M+9VcIE0xsVFvSvTMJe3TsNxiZNyfgfZIwyWg==
+  "]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "127035954683", ",", "352045367981", ",", "373559126408", ",", 
+     "569310543872", ",", "589323567104"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "140283769536", ",", "536178930624", ",", "613258407936", ",", 
+     "913237656408", ",", "936302451687"}], "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.5641194177416973`*^9, 3.564119454049273*^9, 3.564119514567765*^9, 
+   3.5641200645994463`*^9, 3.564120105153776*^9, {3.56412014334568*^9, 
+   3.5641201700698757`*^9}, 3.5641202086735907`*^9, {3.5641202733689947`*^9, 
+   3.5641202838145647`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Took \"\>", "\[InvisibleSpace]", "0.277442`5.894717200008041", 
+   "\[InvisibleSpace]", "\<\" seconds to complete.\"\>"}],
+  SequenceForm["Took ", 0.277442`5.894717200008041, " seconds to complete."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.5641194177416973`*^9, 3.564119454049273*^9, 3.564119514567765*^9, 
+   3.5641200645994463`*^9, 3.564120105153776*^9, {3.56412014334568*^9, 
+   3.5641201700698757`*^9}, 3.5641202086735907`*^9, {3.5641202733689947`*^9, 
+   3.564120283815667*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.56411965127975*^9, 3.5641196775513277`*^9}}]
+},
+WindowSize->{740, 652},
+WindowMargins->{{20, Automatic}, {Automatic, 44}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 436, 14, 198, "Text"],
+Cell[CellGroupData[{
+Cell[1018, 38, 6505, 146, 728, "Input"],
+Cell[CellGroupData[{
+Cell[7548, 188, 632, 15, 37, "Print"],
+Cell[8183, 205, 547, 10, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[8757, 219, 93, 1, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,648 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     25802,        639]
+NotebookOptionsPosition[     25205,        613]
+NotebookOutlinePosition[     25565,        629]
+CellTagsIndexPosition[     25522,        626]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl060.nb
+Pbrl060
+Project Euler
+Created by Zhiming Wang on 12/09/12.
+------------------------------------
+Algorithm:
+Dynamic programming. First generate single primes, then pairs, triplets, \
+quadruplets, and finally quituplets.
+-------------------
+Answer:26033
+\
+\>", "Text",
+ CellChangeTimes->{{3.564101252053794*^9, 3.564101369869223*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kTestRange", " ", "=", " ", "30000"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Functions", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"concatenationIsPrime", "[", 
+      RowBox[{"p1_", ",", "p2_"}], "]"}], ":=", 
+     RowBox[{"PrimeQ", "[", 
+      RowBox[{
+       RowBox[{"p1", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"IntegerLength", "[", "p2", "]"}]}]}], "+", "p2"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeBegin", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Generate", " ", "single", " ", "prime", " ", "list"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primeSingles", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"prime", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{"prime", "\[LessEqual]", "kTestRange"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"primeSingles", ",", "prime"}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"prime", "=", 
+        RowBox[{"NextPrime", "[", "prime", "]"}]}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimeSingles", "=", 
+     RowBox[{"Length", "[", "primeSingles", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Generate", " ", "prime", " ", "pairs"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primePairs", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimePairs", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"nPrimeSingles", "-", "1"}]}], ",", 
+      RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"j", "=", 
+          RowBox[{"i", "+", "1"}]}], ",", 
+         RowBox[{"j", "\[LessEqual]", "nPrimeSingles"}], ",", 
+         RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"prime1", "=", 
+           RowBox[{"primeSingles", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime2", "=", 
+           RowBox[{"primeSingles", "[", 
+            RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime1", ",", "prime2"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime2", ",", "prime1"}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primePairs", ",", 
+               RowBox[{"{", 
+                RowBox[{"prime1", ",", "prime2"}], "}"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimePairs", ",", "prime1"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimePairs", ",", "prime2"}], "]"}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimePairs", "=", 
+     RowBox[{"Sort", "[", "primesInPrimePairs", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimePairs", "=", 
+     RowBox[{"DeleteDuplicates", "[", "primesInPrimePairs", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimePairs", "=", 
+     RowBox[{"Length", "[", "primePairs", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimesInPrimePairs", "=", 
+     RowBox[{"Length", "[", "primesInPrimePairs", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Generate", " ", "prime", " ", "triplets"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primeTriplets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeTriplets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"minimumThirdPrimeIndex", "=", "1"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"nPrimePairs", "-", "1"}]}], ",", 
+      RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"primesInPrimePairs", "[", 
+           RowBox[{"[", "minimumThirdPrimeIndex", "]"}], "]"}], 
+          "\[LessEqual]", 
+          RowBox[{
+           RowBox[{"primePairs", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"++", "minimumThirdPrimeIndex"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"j", "=", "minimumThirdPrimeIndex"}], ",", 
+         RowBox[{"j", "\[LessEqual]", "nPrimesInPrimePairs"}], ",", 
+         RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"prime1", "=", 
+           RowBox[{
+            RowBox[{"primePairs", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime2", "=", 
+           RowBox[{
+            RowBox[{"primePairs", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime3", "=", 
+           RowBox[{"primesInPrimePairs", "[", 
+            RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"prime3", "<=", "prime2"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Continue", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime1", ",", "prime3"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime2", ",", "prime3"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime3", ",", "prime1"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime3", ",", "prime2"}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primeTriplets", ",", 
+               RowBox[{"{", 
+                RowBox[{"prime1", ",", "prime2", ",", "prime3"}], "}"}]}], 
+              "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeTriplets", ",", "prime1"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeTriplets", ",", "prime2"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeTriplets", ",", "prime3"}], "]"}], 
+             ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeTriplets", "=", 
+     RowBox[{"Sort", "[", "primesInPrimeTriplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeTriplets", "=", 
+     RowBox[{"DeleteDuplicates", "[", "primesInPrimeTriplets", "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimeTriplets", "=", 
+     RowBox[{"Length", "[", "primeTriplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimesInPrimeTriplets", "=", 
+     RowBox[{"Length", "[", "primesInPrimeTriplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Generate", " ", "prime", " ", "quadruplets"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primeQuadruplets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeQuadruplets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"minimumFourthPrimeIndex", "=", "1"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"nPrimeTriplets", "-", "1"}]}], ",", 
+      RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"primesInPrimeTriplets", "[", 
+           RowBox[{"[", "minimumFourthPrimeIndex", "]"}], "]"}], 
+          "\[LessEqual]", 
+          RowBox[{
+           RowBox[{"primeTriplets", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"++", "minimumFourthPrimeIndex"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"j", "=", "minimumFourthPrimeIndex"}], ",", 
+         RowBox[{"j", "\[LessEqual]", "nPrimesInPrimeTriplets"}], ",", 
+         RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"prime1", "=", 
+           RowBox[{
+            RowBox[{"primeTriplets", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime2", "=", 
+           RowBox[{
+            RowBox[{"primeTriplets", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime3", "=", 
+           RowBox[{
+            RowBox[{"primeTriplets", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime4", "=", 
+           RowBox[{"primesInPrimeTriplets", "[", 
+            RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"prime4", "\[LessEqual]", "prime3"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Continue", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime1", ",", "prime4"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime2", ",", "prime4"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime3", ",", "prime4"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime4", ",", "prime1"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime4", ",", "prime2"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime4", ",", "prime3"}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primeQuadruplets", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                "prime1", ",", "prime2", ",", "prime3", ",", "prime4"}], 
+                "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuadruplets", ",", "prime1"}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuadruplets", ",", "prime2"}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuadruplets", ",", "prime3"}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuadruplets", ",", "prime4"}], "]"}], 
+             ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeQuadruplets", "=", 
+     RowBox[{"Sort", "[", "primesInPrimeQuadruplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeQuadruplets", "=", 
+     RowBox[{"DeleteDuplicates", "[", "primesInPrimeQuadruplets", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimeQuadruplets", "=", 
+     RowBox[{"Length", "[", "primeQuadruplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimesInPrimeQuadruplets", "=", 
+     RowBox[{"Length", "[", "primesInPrimeQuadruplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Generate", " ", "prime", " ", "quintuplets"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primeQuintuplets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeQuintuplets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"minimumFifthPrimeIndex", "=", "1"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"nPrimeQuadruplets", "-", "1"}]}], ",", 
+      RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"primesInPrimeQuadruplets", "[", 
+           RowBox[{"[", "minimumFifthPrimeIndex", "]"}], "]"}], 
+          "\[LessEqual]", 
+          RowBox[{
+           RowBox[{"primeQuadruplets", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"++", "minimumFifthPrimeIndex"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"j", "=", "minimumFifthPrimeIndex"}], ",", 
+         RowBox[{"j", "\[LessEqual]", "nPrimesInPrimeQuadruplets"}], ",", 
+         RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"prime1", "=", 
+           RowBox[{
+            RowBox[{"primeQuadruplets", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime2", "=", 
+           RowBox[{
+            RowBox[{"primeQuadruplets", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime3", "=", 
+           RowBox[{
+            RowBox[{"primeQuadruplets", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime4", "=", 
+           RowBox[{
+            RowBox[{"primeQuadruplets", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "4", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"prime5", "=", 
+           RowBox[{"primesInPrimeQuadruplets", "[", 
+            RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"prime5", "\[LessEqual]", "prime4"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Continue", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime1", ",", "prime5"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime2", ",", "prime5"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime3", ",", "prime5"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime4", ",", "prime5"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime5", ",", "prime1"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime5", ",", "prime2"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime5", ",", "prime3"}], "]"}], "&&", 
+             "\[IndentingNewLine]", 
+             RowBox[{"concatenationIsPrime", "[", 
+              RowBox[{"prime5", ",", "prime4"}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primeQuintuplets", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                "prime1", ",", "prime2", ",", "prime3", ",", "prime4", ",", 
+                 "prime5"}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuintuplets", ",", "prime1"}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuintuplets", ",", "prime2"}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuintuplets", ",", "prime3"}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuintuplets", ",", "prime4"}], "]"}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"primesInPrimeQuintuplets", ",", "prime5"}], "]"}], 
+             ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeQuintuplets", "=", 
+     RowBox[{"Sort", "[", "primesInPrimeQuintuplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"primesInPrimeQuintuplets", "=", 
+     RowBox[{"DeleteDuplicates", "[", "primesInPrimeQuintuplets", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimeQuintuplets", "=", 
+     RowBox[{"Length", "[", "primeQuintuplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nPrimesInPrimeQuintuplets", "=", 
+     RowBox[{"Length", "[", "primesInPrimeQuintuplets", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "primeQuintuplets", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Timing", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeEnd", "=", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeElapsed", "=", 
+     RowBox[{"timeEnd", "-", "timeBegin"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<Took \>\"", ",", "timeElapsed", ",", 
+      "\"\< seconds to complete.\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdzUsowwEAx/H/sIdabCORsQ1NYpnV1lIeW9l2EqMmr6KkHMzmkbSLgx3M
+luWgZmXtwFrMgRXCwZKSHLZ5TGuNUvIKNZNk9vsffn3qd/kKBvXaoQyCILjp
+waZPvyVhfVJ4inVXkDfBv4Ot0mfKV1r3ZYgFD3R9HMiUiwsgUXUmg0LjUT38
+3vC2Q02dWg/tJwYjpPFzpmFvUjQLd5eDFnicLdyCLMXmNpR1GnZgjTUWgmyV
+PAwtA7wb6FgZjkIO7fQeOkc/HsnfrP2F/thqRjJtYbCcDl22KANG3S25UD5j
+yIOMsvEi6FHaS+BLd0QAae/hCjjvdFTDi8CbCGoCdAlUsxJy6E5lNUCFZr8R
+im1eFeSs+Ujb4pQOyKuljpHdh/gUHCmNmKBS2jMHfed7ZthcKbHCycwuO/xj
+XjvgUuqWdIG7uA77Dzl+smNysX/SUl8p+fAfUsn7yQ==
+  "]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"7", ",", "1237", ",", "2341", ",", "12409", ",", "18433"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "5197", ",", "5701", ",", "6733", ",", "8389"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{"467", ",", "941", ",", "2099", ",", "19793", ",", "25253"}], 
+    "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{{3.564090777340104*^9, 3.5640907834320097`*^9}, 
+   3.56409095949096*^9, 3.564091060650064*^9, 3.564091111179944*^9, {
+   3.5640911873468122`*^9, 3.564091210937497*^9}, 3.5640913804170923`*^9, 
+   3.564091415272085*^9, 3.5640914644546957`*^9, 3.564091548829987*^9, 
+   3.5640916290522537`*^9, 3.5640916888244467`*^9, 3.564091760988077*^9, {
+   3.564091840479458*^9, 3.564091849334979*^9}, {3.564091882688314*^9, 
+   3.564091898512823*^9}, 3.564091991300406*^9, 3.564092322392384*^9, {
+   3.5640923708574057`*^9, 3.564092395319783*^9}, 3.564092473665938*^9, 
+   3.5640928365650387`*^9, 3.564096195899777*^9, 3.564101011622922*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Took \"\>", "\[InvisibleSpace]", 
+   "3296.874949`9.969647468091592", 
+   "\[InvisibleSpace]", "\<\" seconds to complete.\"\>"}],
+  SequenceForm[
+  "Took ", 3296.874949`9.969647468091592, " seconds to complete."],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.564090777340104*^9, 3.5640907834320097`*^9}, 
+   3.56409095949096*^9, 3.564091060650064*^9, 3.564091111179944*^9, {
+   3.5640911873468122`*^9, 3.564091210937497*^9}, 3.5640913804170923`*^9, 
+   3.564091415272085*^9, 3.5640914644546957`*^9, 3.564091548829987*^9, 
+   3.5640916290522537`*^9, 3.5640916888244467`*^9, 3.564091760988077*^9, {
+   3.564091840479458*^9, 3.564091849334979*^9}, {3.564091882688314*^9, 
+   3.564091898512823*^9}, 3.564091991300406*^9, 3.564092322392384*^9, {
+   3.5640923708574057`*^9, 3.564092395319783*^9}, 3.564092473665938*^9, 
+   3.5640928365650387`*^9, 3.564096195899777*^9, 3.564101011623918*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Array", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"primeQuintuplets", "[", 
+      RowBox[{"[", "#", "]"}], "]"}], "]"}], "&"}], ",", "3"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.564101096207357*^9, 3.5641011220922117`*^9}, {
+  3.564101157113516*^9, 3.564101191307663*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"34427", ",", "26033", ",", "48553"}], "}"}]], "Output",
+ CellChangeTimes->{{3.564101179339851*^9, 3.564101192745562*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.564101231730546*^9, 3.564101241953972*^9}}]
+},
+WindowSize->{740, 652},
+WindowMargins->{{22, Automatic}, {40, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 353, 13, 198, "Text"],
+Cell[CellGroupData[{
+Cell[935, 37, 21560, 506, 2129, "Input"],
+Cell[CellGroupData[{
+Cell[22520, 547, 1024, 20, 21, "Print"],
+Cell[23547, 569, 941, 16, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24537, 591, 327, 9, 27, "Input"],
+Cell[24867, 602, 161, 3, 27, "Output"]
+}, Open  ]],
+Cell[25043, 608, 158, 3, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

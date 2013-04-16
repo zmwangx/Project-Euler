@@ -1,0 +1,108 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2781,         99]
+NotebookOptionsPosition[      2416,         81]
+NotebookOutlinePosition[      2776,         97]
+CellTagsIndexPosition[      2733,         94]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl099.nb
+Prbl099
+Project Euler
+Created by Zhiming Wang on 12/16/12.
+------------------------------------
+Algorithm:
+Comparing logarithms.
+---------------------
+Answer: 709
+\
+\>", "Text",
+ CellChangeTimes->{{3.564678529117672*^9, 3.564678571073224*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"input", "=", 
+   RowBox[{"ReadList", "[", 
+    RowBox[{
+    "\"\<Dropbox/02ProgrammingProjects/ProjectEuler/Mathematica/Prbl099/base_\
+exp.txt\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{"Number", ",", "Character", ",", "Number"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"logarithms", "=", 
+   RowBox[{"Array", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"input", "[", 
+         RowBox[{"[", 
+          RowBox[{"#", ",", "3"}], "]"}], "]"}], "*", 
+        RowBox[{"Log", "[", 
+         RowBox[{"input", "[", 
+          RowBox[{"[", 
+           RowBox[{"#", ",", "1"}], "]"}], "]"}], "]"}]}], ")"}], "&"}], ",", 
+     "1000"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Position", "[", 
+    RowBox[{"logarithms", ",", 
+     RowBox[{"Max", "[", "logarithms", "]"}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.564677787387628*^9, 3.564677794028536*^9}, {
+  3.564677827332024*^9, 3.5646778980517187`*^9}, {3.564677935064427*^9, 
+  3.5646779547100897`*^9}, {3.564678005349531*^9, 3.564678016927874*^9}, {
+  3.564678047985814*^9, 3.5646782480236187`*^9}, {3.564678295774251*^9, 
+  3.564678324814958*^9}, {3.564678442847578*^9, 3.5646785112353373`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "709", "}"}], "}"}]], "Print",
+ CellChangeTimes->{{3.564678479604722*^9, 3.564678512653759*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{20, Automatic}, {Automatic, 44}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 264, 12, 181, "Text"],
+Cell[CellGroupData[{
+Cell[846, 36, 1411, 37, 85, "Input"],
+Cell[2260, 75, 140, 3, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

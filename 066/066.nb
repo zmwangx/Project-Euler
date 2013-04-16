@@ -1,0 +1,221 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7560,        212]
+NotebookOptionsPosition[      7188,        194]
+NotebookOutlinePosition[      7549,        210]
+CellTagsIndexPosition[      7506,        207]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl066.nb\nPrbl066\nProject Euler\nCreated by Zhiming Wang on 12/10/12.\n\
+------------------------------------\nAlgorithm:\nNote that the minimal \
+solution to a Pell function is a continued fraction convergent of ",
+ Cell[BoxData[
+  FormBox["D", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\nMore specifically, when length ",
+ StyleBox["l",
+  FontSlant->"Italic"],
+ " is odd, the minimal solution is ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    SubscriptBox["A", 
+     RowBox[{
+      RowBox[{"2", "l"}], "-", "1"}]], 
+    SubscriptBox["B", 
+     RowBox[{
+      RowBox[{"2", "l"}], "-", "1"}]]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and when ",
+ StyleBox["l",
+  FontSlant->"Italic"],
+ " is even, the minimal solusion is ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    SubscriptBox["A", 
+     RowBox[{"l", "-", "1"}]], 
+    SubscriptBox["B", 
+     RowBox[{"l", "-", "1"}]]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", if the convergents are indexed from 0.\n\
+------------------------------------------------------------------------------\
+------------\nAnswer: 661\n"
+}], "Text",
+ CellChangeTimes->{{3.56415950965725*^9, 3.564159631149262*^9}, {
+  3.564160556052126*^9, 3.564160572692192*^9}, {3.56416068841541*^9, 
+  3.5641608258447638`*^9}, {3.5641610361322947`*^9, 3.564161055333709*^9}, {
+  3.56416129408195*^9, 3.564161294665153*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kRange", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"maxMinimalSolution", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"bigD", "=", "1"}], ",", 
+      RowBox[{"bigD", "\[LessEqual]", "kRange"}], ",", 
+      RowBox[{"++", "bigD"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"IntegerQ", "[", 
+          RowBox[{"Sqrt", "[", "bigD", "]"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Continue", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"periodLength", "=", 
+        RowBox[{"Length", "[", 
+         RowBox[{
+          RowBox[{"ContinuedFraction", "[", 
+           RowBox[{"Sqrt", "[", "bigD", "]"}], "]"}], "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"EvenQ", "[", "periodLength", "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"period", " ", "length", " ", "is", " ", "even"}], " ", 
+          "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"convergent", "=", 
+           RowBox[{"Last", "[", 
+            RowBox[{"Convergents", "[", 
+             RowBox[{
+              RowBox[{"Sqrt", "[", "bigD", "]"}], ",", "periodLength"}], 
+             "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"minimalSolution", "=", 
+           RowBox[{"{", 
+            RowBox[{"bigD", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Numerator", "[", "convergent", "]"}], ",", 
+               RowBox[{"Denominator", "[", "convergent", "]"}]}], "}"}]}], 
+            "}"}]}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"period", " ", "length", " ", "is", " ", "odd"}], " ", 
+          "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"convergent", "=", 
+           RowBox[{"Last", "[", 
+            RowBox[{"Convergents", "[", 
+             RowBox[{
+              RowBox[{"Sqrt", "[", "bigD", "]"}], ",", 
+              RowBox[{"periodLength", "*", "2"}]}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"minimalSolution", "=", 
+           RowBox[{"{", 
+            RowBox[{"bigD", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Numerator", "[", "convergent", "]"}], ",", 
+               RowBox[{"Denominator", "[", "convergent", "]"}]}], "}"}]}], 
+            "}"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"minimalSolution", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ">", 
+          RowBox[{
+           RowBox[{"maxMinimalSolution", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"maxMinimalSolution", "=", "minimalSolution"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<The maximum of minimal solutions is: \>\"", ",", " ", 
+      "maxMinimalSolution"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564159637643235*^9, 3.564159687537023*^9}, {
+  3.564159754071603*^9, 3.5641602265113077`*^9}, {3.564160269579713*^9, 
+  3.5641602766934633`*^9}, {3.564160486014826*^9, 3.564160538990979*^9}, {
+  3.564160609097793*^9, 3.5641606266795273`*^9}, {3.564160680842008*^9, 
+  3.564160684136607*^9}, {3.5641608324826517`*^9, 3.564160903833477*^9}, {
+  3.564160937553102*^9, 3.5641610176815367`*^9}, {3.564161077468852*^9, 
+  3.564161217368896*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The maximum of minimal solutions is: \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"661", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "16421658242965910275055840472270471049", ",", 
+       "638728478116949861246791167518480580"}], "}"}]}], "}"}]}],
+  SequenceForm[
+  "The maximum of minimal solutions is: ", {
+   661, {16421658242965910275055840472270471049, 
+     638728478116949861246791167518480580}}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.5641601756798267`*^9, {3.56416021177493*^9, 3.564160226970607*^9}, 
+   3.56416027723606*^9, 3.564160904436427*^9, {3.5641609425889683`*^9, 
+   3.564161018388095*^9}, {3.5641611873702106`*^9, 3.5641612191223717`*^9}, 
+   3.564161288390579*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{Automatic, 129}, {35, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1410, 40, 250, "Text"],
+Cell[CellGroupData[{
+Cell[1992, 64, 4408, 106, 350, "Input"],
+Cell[6403, 172, 769, 19, 37, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

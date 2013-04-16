@@ -1,0 +1,236 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8470,        227]
+NotebookOptionsPosition[      8101,        209]
+NotebookOutlinePosition[      8462,        225]
+CellTagsIndexPosition[      8419,        222]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl090.nb
+Prbl090
+Project Euler
+Created by Zhiming Wang on 12/15/12.
+------------------------------------
+Algorithm:
+Exhaustion.
+-----------
+Answer: 1217
+\
+\>", "Text",
+ CellChangeTimes->{{3.5645947725519753`*^9, 3.564594835264151*^9}, {
+  3.5645961342126503`*^9, 3.5645961349571743`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"squareList", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "9"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "6"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "9"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"8", ",", "1"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cubes", "=", 
+     RowBox[{"Subsets", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "0", ",", "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", 
+         "7", ",", "8", ",", "9"}], "}"}], ",", 
+       RowBox[{"{", "6", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Extend", " ", "<", "code", ">", "cubes", "<", 
+     RowBox[{"/", "code"}], ">", "."}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"Length", "[", "cubes", "]"}]}], ",", 
+      RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"cube", "=", 
+        RowBox[{"cubes", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"MemberQ", "[", 
+          RowBox[{"cube", ",", "6"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"cube", ",", "9"}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"cube", "=", 
+           RowBox[{"DeleteDuplicates", "[", "cube", "]"}]}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"MemberQ", "[", 
+          RowBox[{"cube", ",", "9"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"cube", ",", "6"}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"cube", "=", 
+           RowBox[{"DeleteDuplicates", "[", "cube", "]"}]}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"cubes", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "=", "cube"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Exhaustion", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"count", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"cube1Index", "=", "1"}], ",", 
+      RowBox[{"cube1Index", "\[LessEqual]", 
+       RowBox[{"Length", "[", "cubes", "]"}]}], ",", 
+      RowBox[{"++", "cube1Index"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"cube2Index", "=", "cube1Index"}], ",", 
+         RowBox[{"cube2Index", "\[LessEqual]", 
+          RowBox[{"Length", "[", "cubes", "]"}]}], ",", 
+         RowBox[{"++", "cube2Index"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"cube1", "=", 
+           RowBox[{"cubes", "[", 
+            RowBox[{"[", "cube1Index", "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"cube2", "=", 
+           RowBox[{"cubes", "[", 
+            RowBox[{"[", " ", "cube2Index", "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"canFormAllSquares", "=", "True"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"squareIndex", "=", "1"}], ",", 
+            RowBox[{"squareIndex", "\[LessEqual]", "9"}], ",", 
+            RowBox[{"++", "squareIndex"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"squareDigit1", "=", 
+              RowBox[{
+               RowBox[{"squareList", "[", 
+                RowBox[{"[", "squareIndex", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"squareDigit2", "=", 
+              RowBox[{
+               RowBox[{"squareList", "[", 
+                RowBox[{"[", "squareIndex", "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"!", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"MemberQ", "[", 
+                    RowBox[{"cube1", ",", "squareDigit1"}], "]"}], "&&", 
+                   RowBox[{"MemberQ", "[", 
+                    RowBox[{"cube2", ",", "squareDigit2"}], "]"}]}], ")"}]}], 
+                "&&", "\[IndentingNewLine]", 
+                RowBox[{"!", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"MemberQ", "[", 
+                    RowBox[{"cube2", ",", "squareDigit1"}], "]"}], "&&", 
+                   RowBox[{"MemberQ", "[", 
+                    RowBox[{"cube1", ",", "squareDigit2"}], "]"}]}], 
+                  ")"}]}]}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"canFormAllSquares", "=", "False"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+              "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{"canFormAllSquares", ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"++", "count"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+          ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "count", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564594861182413*^9, 3.5645952018927402`*^9}, {
+  3.564595232463581*^9, 3.564595235063938*^9}, {3.5645952783031673`*^9, 
+  3.56459530299841*^9}, {3.5645953585457373`*^9, 3.564595796589179*^9}, {
+  3.5645958393005953`*^9, 3.564595858961289*^9}, {3.564595909447043*^9, 
+  3.564596000373019*^9}, {3.564596065424527*^9, 3.5645960655906153`*^9}, {
+  3.5645961209829407`*^9, 3.564596126247428*^9}}],
+
+Cell[BoxData["1217"], "Print",
+ CellChangeTimes->{
+  3.564595203995555*^9, {3.564595367153276*^9, 3.564595426244466*^9}, 
+   3.5645957855796328`*^9, 3.564595863648447*^9, 3.564595938940386*^9, {
+   3.564595976196652*^9, 3.564596005494442*^9}, 3.564596069023696*^9, 
+   3.56459613064648*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{-20, Automatic}, {-2, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 300, 13, 181, "Text"],
+Cell[CellGroupData[{
+Cell[882, 37, 6910, 162, 672, "Input"],
+Cell[7795, 201, 290, 5, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

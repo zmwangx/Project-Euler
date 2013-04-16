@@ -1,0 +1,240 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9252,        231]
+NotebookOptionsPosition[      8955,        216]
+NotebookOutlinePosition[      9315,        232]
+CellTagsIndexPosition[      9272,        229]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl095.nb
+Prbl095
+Project Euler
+Created by Zhiming Wang on 12/15/12.
+------------------------------------
+Algorithm:
+Exhaustion.
+-----------
+Answer: 14316
+\
+\>", "Text",
+ CellChangeTimes->{{3.564606207338748*^9, 3.564606253751092*^9}, {
+  3.564611634277957*^9, 3.564611634705468*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kRange", " ", "=", " ", "1000000"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"next", "=", 
+     RowBox[{"Array", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"DivisorSum", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"#", "&"}]}], "]"}], "-", "#"}], ")"}], "&"}], ",", 
+       "kRange"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"visited", "=", 
+      RowBox[{"Array", "[", 
+       RowBox[{
+        RowBox[{"False", "&"}], ",", "kRange"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"visitedInPreviousIterations", "=", 
+      RowBox[{"Array", "[", 
+       RowBox[{
+        RowBox[{"False", "&"}], ",", "kRange"}], "]"}]}], ";"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Put", "[", 
+     RowBox[{"next", ",", "\"\<prbl095.txt\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"longestAmicableChain", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"visited", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "=", "True"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"visitedInPreviousIterations", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "=", "True"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"n", "=", "2"}], ",", 
+       RowBox[{"n", "\[LessEqual]", "kRange"}], ",", 
+       RowBox[{"++", "n"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"!", 
+           RowBox[{"visited", "[", 
+            RowBox[{"[", "n", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"chain", "=", 
+            RowBox[{"{", "n", "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"current", "=", "n"}], ";", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"visited", "[", 
+             RowBox[{"[", "n", "]"}], "]"}], "=", "True"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"While", "[", 
+            RowBox[{"True", ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"current", "=", 
+               RowBox[{"next", "[", 
+                RowBox[{"[", "current", "]"}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"current", ">", "kRange"}], "||", 
+                 RowBox[{"visitedInPreviousIterations", "[", 
+                  RowBox[{"[", "current", "]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"newAmicableChainFound", "=", "False"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+               "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"visited", "[", 
+                 RowBox[{"[", "current", "]"}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"newAmicableChainFound", "=", "True"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+               "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"visited", "[", 
+                RowBox[{"[", "current", "]"}], "]"}], "=", "True"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"chain", ",", "current"}], "]"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{"newAmicableChainFound", ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"amicableChain", "=", 
+               RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"amicableChainFirstElement", "=", "current"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"amicableChainHasBegun", "=", "False"}], ";", 
+              "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              RowBox[{"currentChainLength", "=", 
+               RowBox[{"Length", "[", "chain", "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"For", "[", 
+               RowBox[{
+                RowBox[{"i", "=", "1"}], ",", 
+                RowBox[{"i", "\[LessEqual]", "currentChainLength"}], ",", 
+                RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"element", "=", 
+                  RowBox[{"chain", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"visitedInPreviousIterations", "[", 
+                   RowBox[{"[", "element", "]"}], "]"}], "=", "True"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{
+                   "element", "\[Equal]", "amicableChainFirstElement"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"amicableChainHasBegun", "=", "True"}], ";"}]}], 
+                  "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"If", "[", 
+                  RowBox[{"amicableChainHasBegun", ",", "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"amicableChain", ",", "element"}], "]"}], ";"}]}],
+                   "\[IndentingNewLine]", "]"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Length", "[", "amicableChain", "]"}], ">", 
+                 RowBox[{"Length", "[", "longestAmicableChain", "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"longestAmicableChain", "=", "amicableChain"}], 
+                 ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<length: \>\"", ",", 
+       RowBox[{"Length", "[", "longestAmicableChain", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<min: \>\"", ",", " ", 
+       RowBox[{"Min", "[", "longestAmicableChain", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "longestAmicableChain", "]"}], ";"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5646062610185003`*^9, 3.564606442848589*^9}, {
+  3.564606473513435*^9, 3.564606501498929*^9}, {3.564606543946652*^9, 
+  3.564607254015378*^9}, {3.564607290696823*^9, 3.564607294315255*^9}, {
+  3.5646073297794943`*^9, 3.564607393177288*^9}, {3.564607485380669*^9, 
+  3.5646075353520107`*^9}, {3.5646075749405603`*^9, 3.56460774286656*^9}, {
+  3.564607928581726*^9, 3.564607998147073*^9}, {3.564608042031686*^9, 
+  3.564608124076384*^9}, {3.564608732161312*^9, 3.564608735735374*^9}, {
+  3.56460878665068*^9, 3.564608800418868*^9}}]
+},
+WindowSize->{740, 652},
+WindowMargins->{{20, Automatic}, {Automatic, 44}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 295, 13, 181, "Text"],
+Cell[855, 35, 8096, 179, 952, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

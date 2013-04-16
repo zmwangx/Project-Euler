@@ -1,0 +1,260 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10181,        251]
+NotebookOptionsPosition[      9812,        233]
+NotebookOutlinePosition[     10173,        249]
+CellTagsIndexPosition[     10130,        246]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl093.nb
+Prbl093
+Project Euler
+Created by Zhiming Wang on 12/15/12.
+------------------------------------
+Algorithm:
+Exhaustion.
+-----------
+Answer: 1258
+\
+\>", "Text",
+ CellChangeTimes->{{3.564599337600422*^9, 3.564599397514592*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kArithmeticOperations", "=", 
+     RowBox[{"{", 
+      RowBox[{"Plus", ",", "Subtract", ",", "Times", ",", "Divide"}], "}"}]}],
+     ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"maxConsecutive", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"digitsCombinations", "=", 
+     RowBox[{"Subsets", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", 
+         "8", ",", "9"}], "}"}], ",", 
+       RowBox[{"{", "4", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"digitsIndex", "=", "1"}], ",", 
+      RowBox[{"digitsIndex", "\[LessEqual]", 
+       RowBox[{"Length", "[", "digitsCombinations", "]"}]}], ",", 
+      RowBox[{"++", "digitsIndex"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"digits", "=", 
+        RowBox[{"digitsCombinations", "[", 
+         RowBox[{"[", "digitsIndex", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"targets", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"perms", "=", 
+        RowBox[{"Permutations", "[", "digits", "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"permIndex", "=", "1"}], ",", 
+         RowBox[{"permIndex", "\[LessEqual]", "24"}], ",", 
+         RowBox[{"++", "permIndex"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"perm", "=", 
+           RowBox[{"perms", "[", 
+            RowBox[{"[", "permIndex", "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"d1", "=", 
+           RowBox[{"perm", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"d2", "=", 
+           RowBox[{"perm", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"d3", "=", 
+           RowBox[{"perm", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"d4", "=", 
+           RowBox[{"perm", "[", 
+            RowBox[{"[", "4", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"opIndex1", "=", "1"}], ",", 
+            RowBox[{"opIndex1", "\[LessEqual]", "4"}], ",", 
+            RowBox[{"++", "opIndex1"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"op1", "=", 
+              RowBox[{"kArithmeticOperations", "[", 
+               RowBox[{"[", "opIndex1", "]"}], "]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"For", "[", 
+              RowBox[{
+               RowBox[{"opIndex2", "=", "1"}], ",", 
+               RowBox[{"opIndex2", "\[LessEqual]", "4"}], ",", 
+               RowBox[{"++", "opIndex2"}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"op2", "=", 
+                 RowBox[{"kArithmeticOperations", "[", 
+                  RowBox[{"[", "opIndex2", "]"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"For", "[", 
+                 RowBox[{
+                  RowBox[{"opIndex3", "=", "1"}], ",", 
+                  RowBox[{"opIndex3", "\[LessEqual]", "4"}], ",", 
+                  RowBox[{"++", "opIndex3"}], ",", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"op3", "=", 
+                    RowBox[{"kArithmeticOperations", "[", 
+                    RowBox[{"[", "opIndex3", "]"}], "]"}]}], ";", 
+                   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                   RowBox[{"(*", " ", 
+                    RowBox[{
+                    "Expression", " ", "of", " ", "the", " ", "form", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"d1", " ", "op1", " ", "d2"}], ")"}], " ", "op2", 
+                    " ", "d3"}], ")"}], " ", "op3", " ", "d4"}], " ", "*)"}], 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"target", "=", 
+                    RowBox[{"op3", "[", 
+                    RowBox[{
+                    RowBox[{"op2", "[", 
+                    RowBox[{
+                    RowBox[{"op1", "[", 
+                    RowBox[{"d1", ",", "d2"}], "]"}], ",", "d3"}], "]"}], ",",
+                     "d4"}], "]"}]}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"target", ">", "0"}], "&&", 
+                    RowBox[{"IntegerQ", "[", "target", "]"}]}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"targets", "=", 
+                    RowBox[{"Union", "[", 
+                    RowBox[{"targets", ",", 
+                    RowBox[{"{", "target", "}"}]}], "]"}]}], ";"}]}], 
+                    "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", " ", 
+                    RowBox[{
+                    "Expression", " ", "of", " ", "the", " ", "form", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"d1", " ", "op1", " ", "d2"}], ")"}], " ", "op3", 
+                    " ", 
+                    RowBox[{"(", 
+                    RowBox[{"d3", " ", "op2", " ", "d4"}], ")"}]}], " ", 
+                    "*)"}], "\[IndentingNewLine]", 
+                   RowBox[{"target", "=", 
+                    RowBox[{"op3", "[", 
+                    RowBox[{
+                    RowBox[{"op1", "[", 
+                    RowBox[{"d1", ",", "d2"}], "]"}], ",", 
+                    RowBox[{"op2", "[", 
+                    RowBox[{"d3", ",", "d4"}], "]"}]}], "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"target", ">", "0"}], "&&", 
+                    RowBox[{"IntegerQ", "[", "target", "]"}]}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"targets", "=", 
+                    RowBox[{"Union", "[", 
+                    RowBox[{"targets", ",", 
+                    RowBox[{"{", "target", "}"}]}], "]"}]}], ";"}]}], 
+                    "\[IndentingNewLine]", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]",
+               "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"consecutive", "=", "1"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"targets", "[", 
+           RowBox[{"[", "consecutive", "]"}], "]"}], "\[Equal]", 
+          "consecutive"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"++", "consecutive"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"--", "consecutive"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"consecutive", ">", "maxConsecutive"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"maxConsecutive", "=", "consecutive"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"concatenation", "=", 
+           RowBox[{"FromDigits", "[", "digits", "]"}]}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "concatenation", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564597631986401*^9, 3.564597643072433*^9}, {
+  3.564597677967149*^9, 3.564597735789805*^9}, {3.564597785661869*^9, 
+  3.56459818520257*^9}, {3.564598223198469*^9, 3.564598396824617*^9}, {
+  3.564598434830627*^9, 3.564598435311819*^9}, {3.564598481934999*^9, 
+  3.564598493074881*^9}, {3.564598547382997*^9, 3.5645990312053328`*^9}, {
+  3.564599089232698*^9, 3.564599119427968*^9}, {3.564599157846011*^9, 
+  3.564599311637569*^9}, {3.564599403454898*^9, 3.5645994116402807`*^9}}],
+
+Cell[BoxData["1258"], "Print",
+ CellChangeTimes->{
+  3.564598397356551*^9, 3.564598435910775*^9, 3.564598493741495*^9, 
+   3.564598552719873*^9, {3.5645986154085093`*^9, 3.56459864689635*^9}, {
+   3.5645989637820187`*^9, 3.564598979610052*^9}, {3.564599017133608*^9, 
+   3.564599033260292*^9}, 3.564599121324278*^9, 3.564599161937212*^9, 
+   3.564599317329131*^9, 3.564599414310522*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{161, Automatic}, {Automatic, 50}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 245, 12, 181, "Text"],
+Cell[CellGroupData[{
+Cell[827, 36, 8580, 186, 742, "Input"],
+Cell[9410, 224, 386, 6, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

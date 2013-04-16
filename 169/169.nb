@@ -1,0 +1,296 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10626,        287]
+NotebookOptionsPosition[     10256,        269]
+NotebookOutlinePosition[     10616,        285]
+CellTagsIndexPosition[     10573,        282]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl169.nb
+Prbl169
+Project Euler
+Created by Zhiming Wang on 12/18/12.
+------------------------------------
+Algorithm:
+Define the function f(n,k) as teh number of ways to represent the \
+non-negative integer n by
+2^0, 2^1, ..., 2^k under the constraint of this problem.
+
+Basically we use dynamic programming, but on a upon-request basis: only when \
+a value is required in recursion do we compute it and record it for future \
+recall.
+
+The recursive algorithm is like this:
+
+f(n,k) (n >= 0 and k >= 0) {
+(1)\tIf n = 0, return 1;
+(2) If k = 0, 
+\t(a) if n <= 2, return 1;
+\t(b) otherwise, return 0;
+(3) If n < 2^k, return f(n, maxExponent(n));
+(4) If n > 2(2^k + ... + 1) = 2^(k+2) - 2, return 0;
+(5) If f(n,k) is already recorded, return the corresponding f(n,k);
+(6) Otherwise, we already have 2^k <= n <= 2^(k+2) - 2.
+\t(a) 0 <= n = 0 * 2^k + ... <= 2(2^(k-1) + ... + 1) = 2^(k+1) - 2.
+\t\tTest: n <= 2^(k+1) - 2.
+\t\tIf true, \tnExpressions0 = f(n, k-1);
+\t\tIf false, \tnExpressions0 = 0;
+\t(b) 2^k <= n = 1 * 2^k + ... <= 2^k + 2(2^(k-1) + ... + 1) = 3 * 2^k - 2.
+\t\tTest: n <= 3 * 2^k - 2.
+\t\tIf true, \tnExpressions1 = f(n-2^k, k-1);
+\t\tIf false, \tnExpressions1 = 0;
+\t(c) 2^(k+1) <= n = 2 * 2^k + ... <= 2^(k+1) + 2(2^(k-1) + ... + 1) = \
+2^(k+2) - 2.
+\t\tTest: n >= 2^(k+1).
+\t\tIf true, \tnExpressions2 = f(n-2^(k+1), k-1);
+\t\tIf false, \tnExpressions2 = 0;
+\tSumming up:
+\t\ttotal = nExpressions0 + nExpressions1 + nExpressions2;
+\t\tKeep record;
+\t\treturn total;
+}
+-------
+Answer: 178653872807
+\
+\>", "Text",
+ CellChangeTimes->{{3.564850521434988*^9, 3.564851360651161*^9}, {
+  3.564851767599641*^9, 3.564851770128433*^9}, {3.564852760784706*^9, 
+  3.564852771492434*^9}, {3.5648531102920523`*^9, 3.564853110974223*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kN", "=", 
+     RowBox[{"10", "^", "25"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Global", " ", "variables"}], " ", "*)"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"nkEntries", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"correspondingFValues", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Functions", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"maxExponent", "[", "n_", "]"}], ":=", 
+     RowBox[{"Floor", "[", 
+      RowBox[{"Log2", "[", "n", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"n_", ",", "k_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "entryPosition", ",", "nExpressions0", ",", "nExpressions1", ",", 
+         "nExpressions2", ",", "total"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"(", "1", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"n", "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", "1", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "2", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"k", "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"n", "\[LessEqual]", "2"}], ",", "1", ",", "0"}], "]"}],
+             "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "3", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"n", "<", 
+           RowBox[{"2", "^", "k"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", 
+            RowBox[{"f", "[", 
+             RowBox[{"n", ",", 
+              RowBox[{"maxExponent", "[", "n", "]"}]}], "]"}], "]"}], ";"}]}],
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "4", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"n", ">", 
+           RowBox[{
+            RowBox[{"2", "^", 
+             RowBox[{"(", 
+              RowBox[{"k", "+", "2"}], ")"}]}], "-", "2"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", "0", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "5", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"entryPosition", "=", 
+         RowBox[{"Position", "[", 
+          RowBox[{"nkEntries", ",", 
+           RowBox[{"{", 
+            RowBox[{"n", ",", "k"}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", "entryPosition", "]"}], "\[NotEqual]", 
+           "0"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"entryPosition", "=", 
+            RowBox[{"entryPosition", "[", 
+             RowBox[{"[", 
+              RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Return", "[", 
+            RowBox[{"correspondingFValues", "[", 
+             RowBox[{"[", "entryPosition", "]"}], "]"}], "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "6", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "a", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"nExpressions0", "=", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"n", "\[LessEqual]", 
+            RowBox[{
+             RowBox[{"2", "^", 
+              RowBox[{"(", 
+               RowBox[{"k", "+", "1"}], ")"}]}], "-", "2"}]}], ",", 
+           RowBox[{"f", "[", 
+            RowBox[{"n", ",", 
+             RowBox[{"k", "-", "1"}]}], "]"}], ",", "0"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "b", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"nExpressions1", "=", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"n", "\[LessEqual]", 
+            RowBox[{
+             RowBox[{"3", "*", 
+              RowBox[{"2", "^", "k"}]}], "-", "2"}]}], ",", 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"n", "-", 
+              RowBox[{"2", "^", "k"}]}], ",", 
+             RowBox[{"k", "-", "1"}]}], "]"}], ",", "0"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"(", "c", ")"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"nExpressions2", "=", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"2", "^", 
+             RowBox[{"(", 
+              RowBox[{"k", "+", "1"}], ")"}]}], "\[LessEqual]", "n", 
+            "\[LessEqual]", 
+            RowBox[{
+             RowBox[{"2", "^", 
+              RowBox[{"(", 
+               RowBox[{"k", "+", "2"}], ")"}]}], "-", "2"}]}], ",", 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"n", "-", 
+              RowBox[{"2", "^", 
+               RowBox[{"(", 
+                RowBox[{"k", "+", "1"}], ")"}]}]}], ",", 
+             RowBox[{"k", "-", "1"}]}], "]"}], ",", "0"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"total", "=", 
+         RowBox[{
+         "nExpressions0", " ", "+", " ", "nExpressions1", "+", 
+          "nExpressions2"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"nkEntries", ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "k"}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"correspondingFValues", ",", "total"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "total", "]"}], ";"}]}], "\[IndentingNewLine]",
+       "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"f", "[", 
+      RowBox[{"kN", ",", 
+       RowBox[{"maxExponent", "[", "kN", "]"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5648513757238703`*^9, 3.564851811592186*^9}, {
+  3.564852012158958*^9, 3.564852449687769*^9}, {3.564852510209846*^9, 
+  3.5648525250232363`*^9}, {3.5648527140731697`*^9, 3.5648527390154953`*^9}, {
+  3.564852811270328*^9, 3.564852824089652*^9}, {3.564852948679717*^9, 
+  3.564852986355269*^9}, {3.5648530304090233`*^9, 3.564853106625174*^9}}],
+
+Cell[BoxData["178653872807"], "Print",
+ CellChangeTimes->{{3.564852389846817*^9, 3.564852450172607*^9}, 
+   3.564852525983919*^9, 3.564852777586343*^9, {3.564852816023345*^9, 
+   3.564852824505121*^9}, 3.5648529567711773`*^9, 3.5648529869047937`*^9, {
+   3.564853069352333*^9, 3.5648530766200657`*^9}, 3.564853106808318*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{28, Automatic}, {36, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1747, 50, 742, "Text"],
+Cell[CellGroupData[{
+Cell[2329, 74, 7584, 186, 786, "Input"],
+Cell[9916, 262, 324, 4, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

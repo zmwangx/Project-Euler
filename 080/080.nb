@@ -1,0 +1,111 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3429,        102]
+NotebookOptionsPosition[      3101,         85]
+NotebookOutlinePosition[      3461,        101]
+CellTagsIndexPosition[      3418,         98]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kNumberOfDecimalDigits", "=", "100"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kRange", "=", "100"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Functions", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Computes", " ", "the", " ", "sum", " ", "of", " ", "first"}], 
+     " ", "<", "code", ">", "kNumberOfDecimalDigits", "<", 
+     RowBox[{"/", "code"}], ">", " ", "\[IndentingNewLine]", 
+     RowBox[{"decimal", " ", "digits", " ", 
+      RowBox[{"(", 
+       RowBox[{"including", " ", "integeral", " ", "part"}], ")"}], " ", 
+      "in"}], " ", "<", "code", ">", "r", "<", 
+     RowBox[{"/", "code"}], ">", "."}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"sumOfDecimalDigits", "[", "r_", "]"}], ":=", 
+     RowBox[{"Total", "[", 
+      RowBox[{"First", "[", 
+       RowBox[{"RealDigits", "[", 
+        RowBox[{"r", ",", "10", ",", "kNumberOfDecimalDigits"}], "]"}], "]"}],
+       "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"totalSum", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", "kRange"}], ",", 
+      RowBox[{"++", "i"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"IntegerQ", "[", 
+           RowBox[{"Sqrt", "[", "i", "]"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"totalSum", "+=", 
+           RowBox[{"sumOfDecimalDigits", "[", 
+            RowBox[{"Sqrt", "[", "i", "]"}], "]"}]}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "totalSum", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564234837053267*^9, 3.5642348858914957`*^9}, {
+  3.564234947602508*^9, 3.5642350603060226`*^9}, {3.564235125064464*^9, 
+  3.564235401156629*^9}, {3.564236454614175*^9, 3.5642365458538437`*^9}}],
+
+Cell[BoxData["40886"], "Print",
+ CellChangeTimes->{3.564236546539036*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{28, Automatic}, {36, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 2430, 57, 267, "Input"],
+Cell[3012, 81, 73, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

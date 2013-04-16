@@ -2,9 +2,9 @@
 !*.c
 !*.cpp
 !*.h
-!*.nb # Mathematica
-!*.m # MATLAB
+!*.nb
+!*.m
 !Makefile
-!*.txt
+!/log
 !.gitignore
 !*/

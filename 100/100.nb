@@ -1,0 +1,159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4568,        150]
+NotebookOptionsPosition[      4202,        132]
+NotebookOutlinePosition[      4562,        148]
+CellTagsIndexPosition[      4519,        145]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl100.nb
+Prbl100
+Project Euler
+Created by Zhiming Wang on 12/16/12.
+------------------------------------
+Algorithm:
+This is a simple Pell equation.
+-------------------------------
+Answer: 756872327473
+\
+\>", "Text",
+ CellChangeTimes->{{3.564680515005677*^9, 3.564680565221809*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kRange", " ", "=", " ", 
+     RowBox[{"10", "^", "12"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Functions", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"nRed", "[", "k_", "]"}], ":=", 
+     RowBox[{"Expand", "[", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"3", "+", 
+            RowBox[{"2", 
+             RowBox[{"Sqrt", "[", "2", "]"}]}]}], ")"}], "^", "k"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"3", "-", 
+            RowBox[{"2", 
+             RowBox[{"Sqrt", "[", "2", "]"}]}]}], ")"}], "^", "k"}]}], ")"}], 
+       "/", 
+       RowBox[{"(", 
+        RowBox[{"4", 
+         RowBox[{"Sqrt", "[", "2", "]"}]}], ")"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"nBlue", "[", "k_", "]"}], ":=", "\[IndentingNewLine]", 
+     RowBox[{"Expand", "[", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", "2", "]"}], "+", "1"}], ")"}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"3", "+", 
+             RowBox[{"2", 
+              RowBox[{"Sqrt", "[", "2", "]"}]}]}], ")"}], "^", "k"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", "2", "]"}], "-", "1"}], ")"}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"3", "-", 
+             RowBox[{"2", 
+              RowBox[{"Sqrt", "[", "2", "]"}]}]}], ")"}], "^", "k"}]}], "+", 
+         RowBox[{"2", 
+          RowBox[{"Sqrt", "[", "2", "]"}]}]}], ")"}], "/", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(", 
+        RowBox[{"4", 
+         RowBox[{"Sqrt", "[", "2", "]"}]}], ")"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"k", " ", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{"True", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"r", "=", 
+        RowBox[{"nRed", "[", "k", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"b", "=", 
+        RowBox[{"nBlue", "[", "k", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"r", "+", "b"}], ">", "kRange"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", "b", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"++", "k"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.56467996358599*^9, 3.5646799697895193`*^9}, {
+  3.564680029328228*^9, 3.564680154840247*^9}, {3.564680224358049*^9, 
+  3.564680465723131*^9}}],
+
+Cell[BoxData["756872327473"], "Print",
+ CellChangeTimes->{3.564680470183058*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{28, Automatic}, {36, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 293, 12, 181, "Text"],
+Cell[CellGroupData[{
+Cell[875, 36, 3228, 90, 324, "Input"],
+Cell[4106, 128, 80, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

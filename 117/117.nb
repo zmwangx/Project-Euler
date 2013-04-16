@@ -1,0 +1,163 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4953,        154]
+NotebookOptionsPosition[      4584,        136]
+NotebookOutlinePosition[      4944,        152]
+CellTagsIndexPosition[      4901,        149]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prbl117.nb\nPrbl117\nProject Euler\nCreated by Zhiming Wang on 12/22/12.\n\
+------------------------------------\nAlgorithm:\nFor every three-tuple (r, \
+g, b) where r, g, b are non-negative integers and 2r+3g+4b<=n, there are \
+exactly\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", GridBox[{
+       {
+        RowBox[{"n", "-", "r", "-", 
+         RowBox[{"2", "g"}], "-", 
+         RowBox[{"3", "b"}]}]},
+       {"r"}
+      }], ")"}], 
+    RowBox[{"(", GridBox[{
+       {
+        RowBox[{"n", "-", 
+         RowBox[{"2", "r"}], "-", 
+         RowBox[{"2", "g"}], "-", 
+         RowBox[{"3", "b"}]}]},
+       {"g"}
+      }], ")"}], 
+    RowBox[{"(", GridBox[{
+       {
+        RowBox[{"n", "-", 
+         RowBox[{"2", "r"}], "-", 
+         RowBox[{"3", "g"}], "-", 
+         RowBox[{"3", "b"}]}]},
+       {"b"}
+      }], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\npossibilities. It suffices to exhaust all possible (r, g, b) tuples.\n\
+--------------------------------------------------------------------\nAnswer: \
+",
+ "100808458960497",
+ "\n"
+}], "Text",
+ CellChangeTimes->{{3.5652005964455633`*^9, 3.565200792544427*^9}, {
+  3.565200896629875*^9, 3.5652008984920273`*^9}, {3.565201023328371*^9, 
+  3.565201024001436*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kN", " ", "=", " ", "50"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nTotal", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"r", "=", "0"}], ",", 
+      RowBox[{"r", "\[LessEqual]", 
+       RowBox[{"kN", "/", "2"}]}], ",", 
+      RowBox[{"++", "r"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"g", "=", "0"}], ",", 
+         RowBox[{"g", "\[LessEqual]", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"kN", "-", 
+             RowBox[{"2", "r"}]}], ")"}], "/", "3"}]}], ",", 
+         RowBox[{"++", "g"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"b", "=", "0"}], ",", 
+            RowBox[{"b", "\[LessEqual]", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"kN", "-", 
+                RowBox[{"2", "r"}], "-", 
+                RowBox[{"3", "g"}]}], ")"}], "/", "4"}]}], ",", 
+            RowBox[{"++", "b"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"nTotal", "+=", 
+              RowBox[{
+               RowBox[{"Binomial", "[", 
+                RowBox[{
+                 RowBox[{"kN", "-", "r", "-", 
+                  RowBox[{"2", "g"}], "-", 
+                  RowBox[{"3", "b"}]}], ",", "r"}], "]"}], "*", 
+               RowBox[{"Binomial", "[", 
+                RowBox[{
+                 RowBox[{"kN", "-", 
+                  RowBox[{"2", "r"}], "-", 
+                  RowBox[{"2", "g"}], "-", 
+                  RowBox[{"3", "b"}]}], ",", "g"}], "]"}], "*", 
+               "\[IndentingNewLine]", 
+               RowBox[{"Binomial", "[", 
+                RowBox[{
+                 RowBox[{"kN", "-", 
+                  RowBox[{"2", "r"}], "-", 
+                  RowBox[{"3", "g"}], "-", 
+                  RowBox[{"3", "b"}]}], ",", "b"}], "]"}]}]}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "nTotal", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.565200796894012*^9, 3.5652009889987164`*^9}}],
+
+Cell[BoxData["100808458960497"], "Print",
+ CellChangeTimes->{{3.565200985342795*^9, 3.5652010061220503`*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1282, 40, 280, "Text"],
+Cell[CellGroupData[{
+Cell[1864, 64, 2592, 66, 224, "Input"],
+Cell[4459, 132, 109, 1, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

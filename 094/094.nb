@@ -1,0 +1,289 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8448,        280]
+NotebookOptionsPosition[      8075,        262]
+NotebookOutlinePosition[      8437,        278]
+CellTagsIndexPosition[      8394,        275]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "prl094.nb\nPrbl094\nProject Euler\nCreated by Zhiming Wang on 12/15/12.\n\
+------------------------------------\nAlgorithm:\nFor ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"s", ",", "s", ",", 
+     RowBox[{"s", "+", "1"}]}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"s", "\[GreaterEqual]", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"S", "=", 
+     RowBox[{
+      SqrtBox[
+       RowBox[{
+        RowBox[{"p", "(", 
+         RowBox[{"p", "-", "a"}], ")"}], 
+        RowBox[{"(", 
+         RowBox[{"p", "-", "b"}], ")"}], 
+        RowBox[{"(", 
+         RowBox[{"p", "-", "c"}], ")"}]}]], "=", 
+      RowBox[{
+       FractionBox["1", "4"], "s", 
+       SqrtBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"3", "s"}], "+", "1"}], ")"}], 
+         RowBox[{"(", 
+          RowBox[{"s", "-", "1"}], ")"}]}]]}]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Then ",
+ Cell[BoxData[
+  FormBox["s", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " should be odd. Let ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"s", "=", 
+    RowBox[{
+     RowBox[{"2", "k"}], "+", "1"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", then perimeter ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", "=", 
+    RowBox[{
+     RowBox[{"6", "k"}], "+", "4"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and we need ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"3", 
+     SuperscriptBox["k", "2"]}], "+", 
+    RowBox[{"2", "k"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " to be a perfect square. Let ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"3", 
+      SuperscriptBox["k", "2"]}], "+", 
+     RowBox[{"2", "k"}]}], "=", 
+    SuperscriptBox["n", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", then ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"3", "k"}], "+", "1"}], ")"}], "2"], "-", 
+     RowBox[{"3", 
+      SuperscriptBox["n", "2"]}]}], "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Then we can easily deduce that\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", "=", 
+    FormBox[
+     RowBox[{
+      FractionBox["1", "3"], 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["\[Alpha]", 
+           RowBox[{"2", "t"}]], "+", 
+          SuperscriptBox["\[Beta]", 
+           RowBox[{"2", "t"}]]}], "2"], "-", "1"}], ")"}]}],
+     TraditionalForm]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Alpha]", "=", 
+     RowBox[{"2", "+", 
+      SqrtBox["3"]}]}], ",", 
+    RowBox[{"\[Beta]", "=", 
+     RowBox[{"2", "-", 
+      SqrtBox["3"]}]}], ",", 
+    RowBox[{"t", "\[GreaterEqual]", "1"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". So\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", "=", 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", 
+       RowBox[{"2", "t"}]], "+", 
+      SuperscriptBox["\[Beta]", 
+       RowBox[{"2", "t"}]], "+", "2"}]}], ",", " ", 
+    RowBox[{"t", "\[GreaterEqual]", "1"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nSimilarly, we can deduce that for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"s", ",", "s", ",", 
+      RowBox[{"s", "-", "1"}]}], ")"}], ",", " ", 
+    RowBox[{"s", "\[GreaterEqual]", "2"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", "=", 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", 
+       RowBox[{
+        RowBox[{"2", "t"}], "+", "1"}]], "+", 
+      SuperscriptBox["\[Beta]", 
+       RowBox[{
+        RowBox[{"2", "t"}], "+", "1"}]], "-", "2"}]}], ",", " ", 
+    RowBox[{"t", "\[GreaterEqual]", "1"}]}], TraditionalForm]]],
+ "\n\nSo, in fact, for all ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"t", "\[GreaterEqual]", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", "=", 
+    RowBox[{
+     SuperscriptBox["\[Alpha]", "t"], "+", 
+     SuperscriptBox["\[Beta]", "t"], "+", 
+     RowBox[{"2", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "t"]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nis possible.\n------------\nAnswer: ",
+ "518408346",
+ "\n"
+}], "Text",
+ CellChangeTimes->{{3.564600970981462*^9, 3.564601584334519*^9}, {
+  3.564601635326969*^9, 3.564601677490807*^9}, {3.564601727861801*^9, 
+  3.564601759403553*^9}, {3.5646017974931507`*^9, 3.564601812960705*^9}, {
+  3.564601846808857*^9, 3.5646019325866823`*^9}, {3.564603071580933*^9, 
+  3.564603425666174*^9}, {3.564603473178397*^9, 3.564603473853656*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Constants", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"2", "+", 
+      RowBox[{"Sqrt", "[", "3", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"2", "-", 
+      RowBox[{"Sqrt", "[", "3", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kUpperBound", "=", "1000000000"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Main", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumOfPerimeters", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{"True", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"perimeter", "=", 
+        RowBox[{"Expand", "[", 
+         RowBox[{
+          RowBox[{"a", "^", "t"}], "+", 
+          RowBox[{"b", "^", "t"}], "+", 
+          RowBox[{"2", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"-", "1"}], ")"}], "^", "t"}]}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"perimeter", ">", "kUpperBound"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"sumOfPerimeters", "+=", "perimeter"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"++", "t"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sumOfPerimeters", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.564601938595764*^9, 3.5646019554161777`*^9}, {
+  3.5646021321688337`*^9, 3.564602384661479*^9}, {3.5646024174780188`*^9, 
+  3.5646025749399233`*^9}, {3.564602670313547*^9, 3.5646027142598886`*^9}, {
+  3.564602931589663*^9, 3.564602958960278*^9}, {3.564603010783854*^9, 
+  3.564603015206882*^9}, {3.564603439042582*^9, 3.564603457438393*^9}, {
+  3.564606103308466*^9, 3.564606111899557*^9}}],
+
+Cell[BoxData["518408346"], "Print",
+ CellChangeTimes->{{3.5646024234631357`*^9, 3.5646024491343403`*^9}, 
+   3.5646025290540257`*^9, 3.564602576923183*^9, 3.564602672875656*^9, 
+   3.564602715388736*^9, 3.564603465333271*^9, 3.564606112674861*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{Automatic, 251}, {-20, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 4960, 174, 522, "Text"],
+Cell[CellGroupData[{
+Cell[5542, 198, 2267, 56, 294, "Input"],
+Cell[7812, 256, 247, 3, 21, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

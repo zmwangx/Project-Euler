@@ -1,0 +1,80 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1695,         70]
+NotebookOptionsPosition[      1333,         52]
+NotebookOutlinePosition[      1692,         68]
+CellTagsIndexPosition[      1649,         65]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+prbl097.nb
+Prbl097
+Project Euler
+Created by Zhiming Wang on 12/16/12.
+------------------------------------
+Algorithm:
+Direct computation.
+-------------------
+Answer: 8739992577
+\
+\>", "Text",
+ CellChangeTimes->{{3.564635584684332*^9, 3.564635644419836*^9}, {
+  3.564635752715703*^9, 3.564635752924942*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Mod", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"28433", "*", 
+     RowBox[{"PowerMod", "[", 
+      RowBox[{"2", ",", "7830457", ",", 
+       RowBox[{"10", "^", "10"}]}], "]"}]}], "+", "1"}], ",", 
+   RowBox[{"10", "^", "10"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.564635684480319*^9, 3.5646357276673117`*^9}}],
+
+Cell[BoxData["8739992577"], "Output",
+ CellChangeTimes->{3.564635728463586*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{54, Automatic}, {7, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 316, 13, 181, "Text"],
+Cell[CellGroupData[{
+Cell[898, 37, 337, 9, 27, "Input"],
+Cell[1238, 48, 79, 1, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
