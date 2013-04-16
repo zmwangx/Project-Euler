@@ -1,0 +1,10 @@
+*
+!*.c
+!*.cpp
+!*.h
+!*.nb # Mathematica
+!*.m # MATLAB
+!Makefile
+!*.txt
+!.gitignore
+!*/
