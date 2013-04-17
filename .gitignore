@@ -5,6 +5,7 @@
 !*.nb
 !*.m
 !Makefile
+!ans
 !/log
 !.gitignore
 !*/
