@@ -9,19 +9,7 @@ mod * Created by Zhiming Wang on 04/19/2013.
 #ifndef MODULO_H
 #define MODULO_H
 
-// arith_t must be a signed integral type
-// default is signed int
-// can be changed via macros USE_INT_FOR_ARITM, USE_LONG_FOR_ARITH, and
-// USE_LLONG_FOR_ARITH
-#if   defined(USE_INT_FOR_ARITH)
-typedef signed int arith_t;
-#elif defined(USE_LONG_FOR_ARITH)
-typedef signed long arith_t;
-#elif defined(USE_LLONG_FOR_ARITH)
 typedef signed long long arith_t;
-#else /* default */
-typedef signed int arith_t;
-#endif
 
 /**
  * Greatest common divisor.
