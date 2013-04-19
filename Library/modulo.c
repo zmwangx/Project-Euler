@@ -70,12 +70,14 @@ bezout(arith_t x, arith_t y, arith_t *u, arith_t *v) {
  *     a^{-1} (mod n).
  *
  * Requirement:
- * gcd(a, n) = 1.
+ * n > 1; gcd(a, n) = 1.
  * return value satisfies: 1 <= a^{-1} <= n-1.
  */
 extern arith_t
 inverse(arith_t a, arith_t n) {
     arith_t u, v;
+    // make sure a is positive
+    a = ((a % n) + n) % n;
     bezout(a, n, &u, &v);
     // u is guaranteed to satisfy
     //     -n < u < n
