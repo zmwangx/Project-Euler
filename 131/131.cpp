@@ -24,6 +24,16 @@
 #include <fstream>
 #include <string>
 
+#define MAX 1000000
+
 int main(int argc, const char *argv[]) {
+    size_t num = 0;
+    int p;
+    for (int m1 = 1; (p = 3 * m1 * (m1 + 1) + 1) < MAX; m1++) {
+        if (isPrime(p)) {
+            num++;
+        }
+    }
+    std::cout << num << std::endl;
     return 0;
 }
