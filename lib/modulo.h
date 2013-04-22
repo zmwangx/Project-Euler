@@ -9,7 +9,7 @@ mod * Created by Zhiming Wang on 04/19/2013.
 #ifndef MODULO_H
 #define MODULO_H
 
-typedef signed long long arith_t;
+#define arith_t signed long long
 
 /**
  * Greatest common divisor.
