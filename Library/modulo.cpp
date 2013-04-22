@@ -8,6 +8,8 @@
 
 #include "modulo.h"
 
+static arith_t pwrmod_priv(arith_t a, unsigned k, arith_t n);
+
 /**
  * Greatest common divisor.
  *
@@ -20,6 +22,39 @@ gcd(arith_t x, arith_t y) {
         return y;
     } else {
         return gcd(y, x % y);
+    }
+}
+
+/**
+ * Power mod: a^k (mod n).
+ *
+ * Requirements:
+ * k >= 0, n > 0; the return value is between 0 and n-1.
+ *
+ * Implementation:
+ * Binary recursion. Complexity O(log k).
+ */
+extern arith_t
+pwrmod(arith_t a, unsigned k, arith_t n) {
+    a = (a % n + n) % n;
+    if (a == 0) {
+        return 0;
+    } else {
+        return pwrmod_priv(a, k, n);
+    }
+}
+
+// 0 <= a < n-1, return value also between 0 and n-1
+static arith_t
+pwrmod_priv(arith_t a, unsigned k, arith_t n) {
+    if (k == 0) {
+        return 1;
+    }
+    arith_t half = pwrmod_priv(a, k / 2, n);
+    if (k % 2 == 0) {
+        return half * half % n;
+    } else {
+        return half * half % n * a % n;
     }
 }
 

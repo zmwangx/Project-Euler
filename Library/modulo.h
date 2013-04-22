@@ -14,11 +14,23 @@ typedef signed long long arith_t;
 /**
  * Greatest common divisor.
  *
- * Requirement:
+ * Requirements:
  * x > 0, y > 0.
  */
 extern arith_t
 gcd(arith_t x, arith_t y);
+
+/**
+ * Power mod: a^k (mod n).
+ *
+ * Requirements:
+ * k >= 0, n > 0; the return value is between 0 and n-1.
+ *
+ * Implementation:
+ * Binary recursion. Complexity O(log k).
+ */
+extern arith_t
+pwrmod(arith_t a, unsigned k, arith_t n);
 
 /**
  * Given coprime x and y, calculate u and v for the Bezout formula:
