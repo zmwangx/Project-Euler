@@ -1,5 +1,5 @@
 /**
- * 133.c
+ * 133.cpp
  * Project Euler 133
  * Created by Zhiming Wang on 04/22/2013.
  * --------------------------------------
@@ -18,12 +18,13 @@
  *     10^{2^a 5^b} = 1 (mod p).
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <assert.h>
+#include "../Library/prime.h"
+#include "../Library/modulo.h"
+
+#include <iostream>
+#include <string>
 
 int main(int argc, const char *argv[]) {
+    
     return 0;
 }

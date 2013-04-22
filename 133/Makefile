@@ -1,12 +1,12 @@
-CC = gcc-4.8
-CFLAGS = -g -Wall -Wextra -Wno-unused-parameter -O2 -std=c99 -pedantic -m32
+CXX=g++-4.8
+CXXFLAGS = -g -Wall -Wextra -Wno-unused-parameter -O2 -std=c++11 -pedantic -m32
 LDFLAGS = -m32 -fno-common
-SOURCES = 133.c
-OBJECTS = $(SOURCES:.c=.o)
+SOURCES = 133.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
 TARGETS = 133
 
 $(TARGETS) : $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ ../Library/libnt.a $(LDFLAGS)
 
 .PHONY: clean
 
