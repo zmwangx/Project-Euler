@@ -18,8 +18,8 @@
  *     10^{2^a 5^b} = 1 (mod p).
  */
 
-#include "../Library/prime.h"
-#include "../Library/modulo.h"
+#include "../lib/prime.h"
+#include "../lib/modulo.h"
 
 #include <iostream>
 #include <string>

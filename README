@@ -2,8 +2,9 @@ Programs to some of the early problems I solved were lost. See /log for
 information. (Those dated back to when I was still an Xcode moron.)
 
 The remaining programs are not guaranteed to always work, either (though I
-believe most, if not all of them, are in good standing), since the shared
-libraries has changed a lot ever since first written. I tried to maintain them
-in their original shape (you may still see traces of early, silly code), but
-when I do need to move forward I don't care about backward compatibility, aka
-historical stupidness.
+believe most, if not all of them, are in good standing, provided that you
+modify the Makefile and header path a little), since the shared libraries has
+changed a lot ever since first written. I tried to maintain them in their
+original shape (you may still see traces of early, silly code), but when I do
+need to move forward I don't care about backward compatibility, aka historical
+stupidness.

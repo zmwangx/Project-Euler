@@ -1,6 +1,6 @@
 CXX=g++-4.8
 CXXFLAGS = -g -Wall -Wextra -Wno-unused-parameter -O2 -std=c++11 -pedantic -m32
-LDFLAGS = -m32 -fno-common -L../Library
+LDFLAGS = -m32 -fno-common -L../lib
 SOURCES = 133.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 TARGETS = 133
