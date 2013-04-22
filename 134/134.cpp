@@ -18,6 +18,18 @@
 #include <fstream>
 #include <string>
 
+#define MIN 5
+#define MAX 1000003 // 1000003 is a prime (first prime greater than 1,000,000)
+#define MAX_P1 1000000
+
 int main(int argc, const char *argv[]) {
+    std::vector<int> primes;
+    generatePrimes(primes, MIN, MAX);
+    arith_t sum = 0;
+    for (auto p1: primes) {
+        if (p1 > MAX_P1) {
+            break;
+        }
+    }
     return 0;
 }
