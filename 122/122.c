@@ -13,7 +13,7 @@
 #include <assert.h>
 
 #define MAX_EXPONENT 200
-#define MAX_DEPTH 8
+#define MAX_DEPTH 10
 
 static int _trace[MAX_DEPTH + 1]; // for DFS
 static size_t _currentDepth;
