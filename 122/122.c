@@ -13,9 +13,9 @@
 #include <assert.h>
 
 #define MAX_EXPONENT 200
-#define MAX_DEPTH 7
+#define MAX_DEPTH 8
 
-static int _trace[MAX_DEPTH]; // for DFS
+static int _trace[MAX_DEPTH + 1]; // for DFS
 static size_t _currentDepth;
 static size_t _recursionCount = 0;
 
