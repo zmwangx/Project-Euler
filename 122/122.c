@@ -50,6 +50,19 @@ int main(int argc, const char *argv[]) {
         putchar('\n');
     }
     printf("number of solved exponents: %zu\n", numDetermined);
+
+    // NOTE: the section below is coined up out of hindsight!
+    // 
+    // after testing, only 191 cannot be covered in 10 steps, and it is
+    // obvioulsy doable in 11 steps (the last step by 190 + 1)
+    // so we manually assign 11 to _result[191] and compute the sum
+    _result[191] = 11;
+    size_t sum = 0;
+    for (int i = 1; i <= MAX_EXPONENT; i++) {
+        sum += _result[i];
+    }
+    printf("sum: %zu\n", sum);
+    
     return 0;
 }
 
