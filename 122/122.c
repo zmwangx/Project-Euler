@@ -17,6 +17,7 @@
 
 static int _trace[MAX_DEPTH]; // for DFS
 static size_t _currentDepth;
+static size_t _recursionCount = 0;
 
 static size_t _result[MAX_EXPONENT + 1] = {0};
 
@@ -32,6 +33,7 @@ int main(int argc, const char *argv[]) {
         // set current iterative deepening depth
         _currentDepth = depth;
         iddfs(1); // 1 and 2 fixed
+        printf("depth: %zu; recursion count: %zu\n", depth, _recursionCount);
     }
     // testing print
     size_t numDetermined = 1; // we don't output 1 since it is so trivial
@@ -53,6 +55,7 @@ int main(int argc, const char *argv[]) {
 
 static void
 iddfs(size_t depth) {
+    _recursionCount++;
     // iterative deepening
     if (depth >= _currentDepth) {
         return;
