@@ -13,7 +13,7 @@
 #include <assert.h>
 
 #define MAX_EXPONENT 200
-#define MAX_DEPTH 5
+#define MAX_DEPTH 7
 
 static int _trace[MAX_DEPTH]; // for DFS
 static size_t _currentDepth;
@@ -47,6 +47,7 @@ int main(int argc, const char *argv[]) {
     if (numDetermined % 5 != 0) {
         putchar('\n');
     }
+    printf("number of solved exponents: %zu\n", numDetermined);
     return 0;
 }
 
@@ -75,7 +76,7 @@ iddfs(size_t depth) {
             }
             
             // update result
-            if (_result[new] == 0 || _result[new] > depth + 1) {
+            if (_result[new] == 0) {
                 _result[new] = depth + 1;
             }
             // recursive call
