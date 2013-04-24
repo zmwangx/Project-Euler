@@ -35,7 +35,7 @@ int main(int argc, const char *argv[]) {
     }
     // testing print
     size_t numDetermined = 1; // we don't output 1 since it is so trivial
-    for (int i = 2; i <= MAX_DEPTH; i++) {
+    for (int i = 2; i <= MAX_EXPONENT; i++) {
         if (_result[i] != 0) {
             printf("%3d: %zu\t", i, _result[i]);
             numDetermined++;
