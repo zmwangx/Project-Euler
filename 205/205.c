@@ -26,21 +26,23 @@ int main(int argc, const char *argv[]) {
     // base 4 numbers
     for (int n = 0; n < MAX_BASE4; n++) {
         size_t sum = 0;
+        int ncopy = n;
         for (int i = 0; i < NUM_BASE4; i++) {
-            sum += n % 4;
-            n /= 4;
+            sum += ncopy % 4;
+            ncopy /= 4;
         }
         base4SumNum[sum]++;
     }
     // base 6 numbers
     for (int n = 0; n < MAX_BASE6; n++) {
         size_t sum = 0;
+        int ncopy = n;
         for (int i = 0; i < NUM_BASE6; i++) {
-            sum += n % 6;
-            n /= 6;
+            sum += ncopy % 6;
+            ncopy /= 6;
         }
+        base6SumNum[sum]++;
     }
-    printf("1\n");
 
     // compute probability
     ullong total = (ullong) MAX_BASE4 * (ullong) MAX_BASE6;
