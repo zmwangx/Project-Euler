@@ -28,7 +28,7 @@ int main(int argc, const char *argv[]) {
         size_t sum = 0;
         int ncopy = n;
         for (int i = 0; i < NUM_BASE4; i++) {
-            sum += ncopy % 4;
+            sum += (ncopy % 4 + 1);
             ncopy /= 4;
         }
         base4SumNum[sum]++;
@@ -38,7 +38,7 @@ int main(int argc, const char *argv[]) {
         size_t sum = 0;
         int ncopy = n;
         for (int i = 0; i < NUM_BASE6; i++) {
-            sum += ncopy % 6;
+            sum += (ncopy % 6 + 1);
             ncopy /= 6;
         }
         base6SumNum[sum]++;
