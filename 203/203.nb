@@ -1,0 +1,57 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1202,         48]
+NotebookOptionsPosition[       914,         33]
+NotebookOutlinePosition[      1271,         49]
+CellTagsIndexPosition[      1228,         46]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+203.nb
+Project Euler 203
+Created by Zhiming Wang on 04/27/2013.
+--------------------------------------
+Brute force.\
+\>", "Text",
+ CellChangeTimes->{{3.576095196784616*^9, 3.5760952307865057`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.576095097826437*^9, 3.5760951207126503`*^9}, {
+  3.576095158167974*^9, 3.576095161198114*^9}}]
+},
+WindowSize->{740, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 207, 7, 96, "Text"],
+Cell[767, 29, 143, 2, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
