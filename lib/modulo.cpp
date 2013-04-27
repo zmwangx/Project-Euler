@@ -120,3 +120,16 @@ inverse(arith_t a, arith_t n) {
     // we need to get the positive remainder:
     return (u + n) % n;
 }
+
+/**
+ * Given a, n, and a prime p, check if n is a multiple of the order of a (mod
+ * p), namely, whether a^n = 1 (mod p).
+ *
+ * Requirements:
+ * n >= 0.
+ */
+extern bool
+is_multiple_of_order(arith_t a, arith_t n, arith_t p) {
+    n = gcd(n, p-1); // Fermat little theorem
+    return (pwrmod(a, n, p) == 1);
+}

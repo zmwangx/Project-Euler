@@ -54,4 +54,14 @@ bezout(arith_t x, arith_t y, arith_t *u, arith_t *v);
 extern arith_t
 inverse(arith_t a, arith_t n);
 
+/**
+ * Given a, n, and a prime p, check if n is a multiple of the order of a (mod
+ * p), namely, whether a^n = 1 (mod p).
+ *
+ * Requirements:
+ * n >= 0.
+ */
+extern bool
+is_multiple_of_order(arith_t a, arith_t n, arith_t p);
+
 #endif
