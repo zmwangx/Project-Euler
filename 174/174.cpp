@@ -46,31 +46,54 @@
 
 #include <iostream>
 #include <cmath>
+#include <map>
 
 #define TOTAL 1000000
 
 #define llong long long
 
 int main(int argc, const char *argv[]) {
-    llong counter = 0;
+    std::map<llong, int> numTilesRecord;
+    llong maxM;
+    llong minN;
+    llong maxN;
     // (1) even
-    llong maxM = (TOTAL + 4) / 8;
-    for (llong m = 2; m <= maxM; m++) {
+    maxM = (TOTAL + 4) / 8;
+    for (llong m = 2; m <= maxM; ++m) {
         if ((2*m)*(2*m) <= TOTAL) {
-            counter += m-1;
+            minN = 1;
         } else {
-            counter += m - ceil(sqrt(m*m - TOTAL/4));
+            minN = std::ceil(std::sqrt(m*m - TOTAL/4));
+        }
+        maxN = m - 1;
+        for (llong n = minN; n <= maxN; ++n) {
+            ++numTilesRecord[(2*m)*(2*m) - (2*n)*(2*n)];
         }
     }
     // (2) odd
     maxM = (TOTAL + 8) / 8;
-    for (llong m = 2; m <= maxM; m++) {
+    for (llong m = 2; m <= maxM; ++m) {
         if ((2*m-1)*(2*m-1) <= TOTAL) {
-            counter += m-1;
+            minN = 1;
         } else {
-            counter += m - ceil(sqrt((m-0.5)*(m-0.5) - TOTAL/4) + 0.5);
+            minN = std::ceil(std::sqrt((m-0.5)*(m-0.5) - TOTAL/4) + 0.5);
+        }
+        maxN = m - 1;
+        for (llong n = minN; n <= maxN; ++n) {
+            ++numTilesRecord[(2*m-1)*(2*m-1) - (2*n-1)*(2*n-1)];
         }
     }
-    printf("%lld\n", counter);
+    // count types
+    std::map<int, int> typesRecord;
+    for (auto entry: numTilesRecord) {
+        // entry.first:  number of tiles
+        // entry.second: number of possible laminae
+        typesRecord[entry.second]++;
+    }
+    int sum = 0;
+    for (int n = 1; n <= 10; n++) {
+        sum += typesRecord[n];
+    }
+    std::cout << sum << std::endl;
     return 0;
 }
