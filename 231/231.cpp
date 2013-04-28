@@ -27,7 +27,7 @@ int main(int argc, const char *argv[]) {
             - factorialPrimeIndex(M, p)
             - factorialPrimeIndex(N - M, p);
         if (index > 0) {
-            sum += p;
+            sum += p * index;
         }
     }
     std::cout << sum << std::endl;
@@ -39,7 +39,7 @@ static inline int
 factorialPrimeIndex(int n, int p) {
     int index = 0;
     while (n > 1) {
-        index += n % p;
+        index += n / p;
         n /= p;
     }
     return index;
