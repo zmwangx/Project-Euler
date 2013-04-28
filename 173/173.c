@@ -45,7 +45,32 @@
 #include <string.h>
 #include <stdbool.h>
 #include <assert.h>
+#include <math.h>
+
+#define TOTAL 1000000
+
+#define llong long long
 
 int main(int argc, const char *argv[]) {
+    llong counter = 0;
+    // (1) even
+    llong maxM = (TOTAL + 4) / 8;
+    for (llong m = 2; m <= maxM; m++) {
+        if ((2*m)*(2*m) <= TOTAL) {
+            counter += m-1;
+        } else {
+            counter += m - ceil(sqrt(m*m - TOTAL/4));
+        }
+    }
+    // (2) odd
+    maxM = (TOTAL + 8) / 8;
+    for (llong m = 2; m <= maxM; m++) {
+        if ((2*m-1)*(2*m-1) <= TOTAL) {
+            counter += m-1;
+        } else {
+            counter += m - ceil(sqrt((m-0.5)*(m-0.5) - TOTAL/4) + 0.5);
+        }
+    }
+    printf("%lld\n", counter);
     return 0;
 }
