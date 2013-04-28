@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[      1202,         48]
-NotebookOptionsPosition[       914,         33]
-NotebookOutlinePosition[      1271,         49]
-CellTagsIndexPosition[      1228,         46]
+NotebookDataLength[      3670,        120]
+NotebookOptionsPosition[      3309,        102]
+NotebookOutlinePosition[      3666,        118]
+CellTagsIndexPosition[      3623,        115]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -27,9 +27,78 @@ Brute force.\
 \>", "Text",
  CellChangeTimes->{{3.576095196784616*^9, 3.5760952307865057`*^9}}],
 
-Cell[BoxData[""], "Input",
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"MAX", ":=", "50"}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"record", " ", "binomials"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"list", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "0"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "MAX"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"j", "=", "0"}], ",", 
+       RowBox[{"j", "\[LessEqual]", "i"}], ",", 
+       RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"list", ",", 
+          RowBox[{"Binomial", "[", 
+           RowBox[{"i", ",", "j"}], "]"}]}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"list", "=", 
+    RowBox[{"DeleteDuplicates", "[", "list", "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"sum", " ", "squarefree", " ", "ones"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"length", "=", 
+   RowBox[{"Length", "[", "list", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sum", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "length"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"SquareFreeQ", "[", 
+        RowBox[{"list", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"sum", "+=", 
+         RowBox[{"list", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ";"}], ","}], 
+      "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "sum", "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.576095097826437*^9, 3.5760951207126503`*^9}, {
-  3.576095158167974*^9, 3.576095161198114*^9}}]
+  3.576095158167974*^9, 3.576095161198114*^9}, {3.576095250815447*^9, 
+  3.576095251972723*^9}, {3.576095354503607*^9, 3.5760953722125893`*^9}, {
+  3.576095455786236*^9, 3.576095940006803*^9}}],
+
+Cell[BoxData["34029210557338"], "Print",
+ CellChangeTimes->{{3.5760957909677267`*^9, 3.576095940336233*^9}}]
+}, Open  ]]
 },
 WindowSize->{740, 652},
 WindowMargins->{{4, Automatic}, {Automatic, 4}},
@@ -49,7 +118,10 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[557, 20, 207, 7, 96, "Text"],
-Cell[767, 29, 143, 2, 27, "Input"]
+Cell[CellGroupData[{
+Cell[789, 31, 2393, 65, 294, "Input"],
+Cell[3185, 98, 108, 1, 21, "Print"]
+}, Open  ]]
 }
 ]
 *)
