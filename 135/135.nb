@@ -1,19 +1,12 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 9.0' *)
-
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[       157,          7]
-NotebookDataLength[      5581,        156]
-NotebookOptionsPosition[      5214,        138]
-NotebookOutlinePosition[      5573,        154]
-CellTagsIndexPosition[      5530,        151]
+NotebookDataPosition[         0,          0]
+NotebookDataLength[      5949,        163]
+NotebookOptionsPosition[      5427,        138]
+NotebookOutlinePosition[      5785,        154]
+CellTagsIndexPosition[      5742,        151]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -54,8 +47,8 @@ Cell[BoxData[{
       RowBox[{"Length", "[", "divisors", "]"}]}], ";", "\[IndentingNewLine]", 
      
      RowBox[{"numPairs", "=", 
-      RowBox[{"Quotient", "[", 
-       RowBox[{"length", ",", "2"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Ceiling", "[", 
+       RowBox[{"length", "/", "2"}], "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"numSolutions", "=", "0"}], ";", "\[IndentingNewLine]", 
      RowBox[{"For", "[", 
       RowBox[{
@@ -95,7 +88,8 @@ Cell[BoxData[{
           RowBox[{
            RowBox[{"If", "[", 
             RowBox[{
-             RowBox[{"d", ">", "\[Delta]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"d", ">", "\[Delta]", ">", "0"}], ",", 
+             "\[IndentingNewLine]", 
              RowBox[{"(*", " ", 
               RowBox[{
                RowBox[{"d", ">", "\[Delta]"}], ",", " ", 
@@ -128,16 +122,22 @@ Cell[BoxData[{
   RowBox[{"Print", "[", "counter", "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.576168644925173*^9, 3.576168919512925*^9}, {
   3.5761689721316643`*^9, 3.576169469032902*^9}, {3.576169521642733*^9, 
-  3.576169538149028*^9}, {3.576169679260881*^9, 3.576169705821954*^9}}],
+  3.576169538149028*^9}, {3.576169679260881*^9, 3.576169705821954*^9}, {
+  3.576169886875946*^9, 3.5761698973627043`*^9}, {3.576170197503162*^9, 
+  3.576170199822101*^9}, {3.576171367076872*^9, 3.576171379025712*^9}, {
+  3.5761715948585253`*^9, 3.576171596055255*^9}, {3.576171627654263*^9, 
+  3.576171630024664*^9}}],
 
-Cell[BoxData["564"], "Print",
+Cell[BoxData["4989"], "Print",
  CellChangeTimes->{{3.576169323229658*^9, 3.576169341540292*^9}, {
-  3.576169371931327*^9, 3.576169442460086*^9}, {3.576169524592258*^9, 
-  3.576169538691649*^9}, {3.5761696803615837`*^9, 3.576169697963241*^9}}]
+   3.576169371931327*^9, 3.576169442460086*^9}, {3.576169524592258*^9, 
+   3.576169538691649*^9}, {3.5761696803615837`*^9, 3.576169697963241*^9}, 
+   3.5761697793621893`*^9, 3.576169900799519*^9, 3.576171423392531*^9, 
+   3.576171496949944*^9}]
 }, Open  ]]
 },
 WindowSize->{740, 652},
-WindowMargins->{{Automatic, 18}, {20, Automatic}},
+WindowMargins->{{17, Automatic}, {Automatic, 0}},
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
 2013)",
 StyleDefinitions->"SourceCode.nb"
@@ -153,13 +153,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[557, 20, 418, 12, 181, "Text"],
+Cell[400, 13, 418, 12, 181, "Text"],
 Cell[CellGroupData[{
-Cell[1000, 36, 3954, 94, 448, "Input"],
-Cell[4957, 132, 241, 3, 21, "Print"]
+Cell[843, 29, 4223, 99, 448, "Input"],
+Cell[5069, 130, 342, 5, 21, "Print"]
 }, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)
