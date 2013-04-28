@@ -1,0 +1,96 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2575,         87]
+NotebookOptionsPosition[      2172,         68]
+NotebookOutlinePosition[      2534,         84]
+CellTagsIndexPosition[      2491,         81]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+129.nb
+Project Euler 129\[LineSeparator]Created by Zhiming Wang on 04/28/2013.
+--------------------------------------
+Experiment + brute force.\
+\>", "Text",
+ CellChangeTimes->{{3.5761722590452213`*^9, 3.5761723033289757`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MultiplicativeOrder", "[", 
+  RowBox[{"10", ",", 
+   RowBox[{"Prime", "[", "78510", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5761720387247066`*^9, 3.576172121144464*^9}}],
+
+Cell[BoxData["1000170"], "Output",
+ CellChangeTimes->{{3.57617204845078*^9, 3.57617212153889*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"EXPECTATION", "=", "1000000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MIN", "=", "1000001"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MAX", "=", "1000171"}], ";", 
+  RowBox[{"(*", " ", "known", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "MIN"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "MAX"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MultiplicativeOrder", "[", 
+         RowBox[{"10", ",", 
+          RowBox[{"9", "*", "i"}]}], "]"}], ">", "EXPECTATION"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "[", "i", "]"}], ";", 
+        RowBox[{"Break", "[", "]"}]}], ","}], "\[IndentingNewLine]", "]"}], 
+     ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.576172196538055*^9, 3.576172239823591*^9}, {
+  3.5761723058094807`*^9, 3.576172386490614*^9}}]
+},
+WindowSize->{740, 652},
+WindowMargins->{{Automatic, 243}, {-113, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"SourceCode.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 237, 6, 96, "Text"],
+Cell[CellGroupData[{
+Cell[819, 30, 201, 4, 27, "Input"],
+Cell[1023, 36, 98, 1, 27, "Output"]
+}, Open  ]],
+Cell[1136, 40, 1032, 26, 126, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
