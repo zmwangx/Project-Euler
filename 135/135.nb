@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[      4212,        122]
-NotebookOptionsPosition[      3917,        107]
-NotebookOutlinePosition[      4276,        123]
-CellTagsIndexPosition[      4233,        120]
+NotebookDataLength[      5581,        156]
+NotebookOptionsPosition[      5214,        138]
+NotebookOutlinePosition[      5573,        154]
+CellTagsIndexPosition[      5530,        151]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,78 +32,109 @@ are solutions, the second of which only makes sense when d>\[Delta].\
 \>", "Text",
  CellChangeTimes->{{3.576168469752325*^9, 3.576168601610121*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{"MAX", "=", "1000000"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"TARGETNUMSOLUTIONS", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{"counter", "=", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"For", "[", 
-  RowBox[{
-   RowBox[{"n", "=", "1"}], ",", 
-   RowBox[{"n", "<", "MAX"}], ",", 
-   RowBox[{"n", "++"}], ",", "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
    RowBox[{
-    RowBox[{"divisors", "=", 
-     RowBox[{"Divisors", "[", "n", "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"length", "=", 
-     RowBox[{"Length", "[", "divisors", "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"numPairs", "=", 
-     RowBox[{"Mod", "[", 
-      RowBox[{"length", ",", "2"}], "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"numSolutions", "=", "0"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"For", "[", 
-     RowBox[{
-      RowBox[{"i", "=", "1"}], ",", 
-      RowBox[{"i", "\[LessEqual]", "numPairs"}], ",", 
-      RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"n", "=", "1"}], ",", 
+    RowBox[{"n", "<", "MAX"}], ",", 
+    RowBox[{"n", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"divisors", "=", 
+      RowBox[{"Divisors", "[", "n", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"length", "=", 
+      RowBox[{"Length", "[", "divisors", "]"}]}], ";", "\[IndentingNewLine]", 
+     
+     RowBox[{"numPairs", "=", 
+      RowBox[{"Quotient", "[", 
+       RowBox[{"length", ",", "2"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"numSolutions", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
       RowBox[{
-       RowBox[{"a", "=", 
-        RowBox[{"divisors", "[", 
-         RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"b", "=", 
-        RowBox[{"divisors", "[", 
-         RowBox[{"[", 
-          RowBox[{"length", "+", "1", "-", "i"}], "]"}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"d", "=", 
-        RowBox[{
-         RowBox[{"(", 
-          RowBox[{"a", "+", "b"}], ")"}], "/", "4"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"\[Delta]", "=", 
-        RowBox[{
-         RowBox[{"(", 
-          RowBox[{"b", "-", "a"}], ")"}], "/", "2"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"If", "[", 
-        RowBox[{
-         RowBox[{"!", 
-          RowBox[{"IntegerQ", "[", "d", "]"}]}], ",", "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{"d", " ", "is", " ", "not", " ", "integal"}], " ", "*)"}], 
-         "\[IndentingNewLine]", "Continue", ",", "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{"d", " ", "is", " ", "integal"}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", "numPairs"}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"a", "=", 
+         RowBox[{"divisors", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"b", "=", 
+         RowBox[{"divisors", "[", 
+          RowBox[{"[", 
+           RowBox[{"length", "+", "1", "-", "i"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"d", "=", 
          RowBox[{
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{"d", ">", "\[Delta]"}], ",", "\[IndentingNewLine]", 
-            RowBox[{"(*", " ", 
-             RowBox[{
-              RowBox[{"d", ">", "\[Delta]"}], ",", " ", 
-              RowBox[{"two", " ", "solutions"}]}], " ", "*)"}], 
-            "\[IndentingNewLine]", 
-            RowBox[{"numSolutions", "+=", "2"}], ",", "\[IndentingNewLine]", 
-            RowBox[{"(*", " ", 
-             RowBox[{
-              RowBox[{"d", "\[LessEqual]", "\[Delta]"}], ",", " ", 
-              RowBox[{"one", " ", "solution"}]}], " ", "*)"}], 
-            "\[IndentingNewLine]", 
-            RowBox[{"numSolutions", "+=", "1"}]}], "\[IndentingNewLine]", 
-           "]"}], ";"}]}]}]}]}]}]}]}]}]}], "Input",
+          RowBox[{"(", 
+           RowBox[{"a", "+", "b"}], ")"}], "/", "4"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\[Delta]", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"b", "-", "a"}], ")"}], "/", "2"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"!", 
+           RowBox[{"IntegerQ", "[", "d", "]"}]}], ",", "\[IndentingNewLine]", 
+          
+          RowBox[{"(*", " ", 
+           RowBox[{"d", " ", "is", " ", "not", " ", "integal"}], " ", "*)"}], 
+          "\[IndentingNewLine]", "Continue", ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{"d", " ", "is", " ", "integal"}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"d", ">", "\[Delta]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"(*", " ", 
+              RowBox[{
+               RowBox[{"d", ">", "\[Delta]"}], ",", " ", 
+               RowBox[{"two", " ", "solutions"}]}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"numSolutions", "+=", "2"}], ",", "\[IndentingNewLine]", 
+             
+             RowBox[{"(*", " ", 
+              RowBox[{
+               RowBox[{"d", "\[LessEqual]", "\[Delta]"}], ",", " ", 
+               RowBox[{"one", " ", "solution"}]}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"numSolutions", "+=", "1"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{
+       "If", " ", "there", " ", "are", " ", "exactly", " ", 
+        "TARGETNUMSOLUTIONS", " ", "solutions"}], ",", " ", 
+       RowBox[{"increase", " ", 
+        RowBox[{"counter", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"numSolutions", "\[Equal]", "TARGETNUMSOLUTIONS"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"counter", "++"}], ","}], "\[IndentingNewLine]", "]"}], 
+     ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "counter", "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.576168644925173*^9, 3.576168919512925*^9}, {
-  3.5761689721316643`*^9, 3.576169165978874*^9}}]
+  3.5761689721316643`*^9, 3.576169469032902*^9}, {3.576169521642733*^9, 
+  3.576169538149028*^9}, {3.576169679260881*^9, 3.576169705821954*^9}}],
+
+Cell[BoxData["564"], "Print",
+ CellChangeTimes->{{3.576169323229658*^9, 3.576169341540292*^9}, {
+  3.576169371931327*^9, 3.576169442460086*^9}, {3.576169524592258*^9, 
+  3.576169538691649*^9}, {3.5761696803615837`*^9, 3.576169697963241*^9}}]
+}, Open  ]]
 },
 WindowSize->{740, 652},
 WindowMargins->{{Automatic, 18}, {20, Automatic}},
@@ -123,7 +154,10 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[557, 20, 418, 12, 181, "Text"],
-Cell[978, 34, 2935, 71, 322, "Input"]
+Cell[CellGroupData[{
+Cell[1000, 36, 3954, 94, 448, "Input"],
+Cell[4957, 132, 241, 3, 21, "Print"]
+}, Open  ]]
 }
 ]
 *)
