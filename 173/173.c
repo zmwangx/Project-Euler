@@ -10,23 +10,23 @@
  *
  * For (1), given an m,
  *     (2m)^2 - (2n)^2 <= TOTAL
- * gives
- *     2n >= sqrt(TOTAL - (2m)^2),
+ * gives (in case of (2m)^2 > TOTAL)
+ *     2n >= sqrt((2m)^2 - TOTAL),
  * so
- *     n >= ceil(sqrt(TOTAL/4 - m^2)).
+ *     n >= ceil(sqrt(m^2 - TOTAL/4)).
  * Also note that n <= m-1, so there are
- *     m - (int) ceil(sqrt(TOTAL/4 - m^2))
+ *     m - (int) ceil(sqrt(m^2 - TOTAL/4))
  * possibilities in total.
  *
  *
  * For (2), given an m,
  *     (2m-1)^2 - (2n-1)^2 <= TOTAL
- * gives
- *     2n-1 >= sqrt(TOTAL - (2m-1)^2),
+ * gives (in case of (2m-1)^2 > TOTAL)
+ *     2n-1 >= sqrt((2m-1)^2 - TOTAL),
  * so
- *     n >= ceil(sqrt(TOTAL/4 - (m-1/2)^2) + 1/2).
+ *     n >= ceil(sqrt((m-1/2)^2 - TOTAL/4) + 1/2).
  * Also note that n <= m-1, so there are
- *     m - (int) ceil(sqrt(TOTAL/4 - (m-1/2)^2) + 1/2)
+ *     m - (int) ceil(sqrt((m-1/2)^2 - TOTAL/4) + 1/2)
  * possibilities in total.
  *
  *
