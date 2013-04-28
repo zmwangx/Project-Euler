@@ -30,7 +30,7 @@ int main(int argc, const char *argv[]) {
     f4[0] = 0;
     f5[0] = 0;
     f6[0] = 0;
-    for (size_t i = 0; i <= LENGTH; i++) {
+    for (size_t i = 1; i <= LENGTH; i++) {
         f1[i] = f1[i-1] + f2[i-1] + f3[i-1];
         f2[i] = f1[i-1];
         f3[i] = f2[i-1];
