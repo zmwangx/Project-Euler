@@ -6,6 +6,9 @@
  * Formula:
  * For a cuboid of dimensions a*b*c, its k-th layer consumes:
  * 2(ab+bc+ca) + 4(k-1)(a+b+c) + (4k^2-12k+8).
+ *
+ * Answer:
+ * 18522.
  */
 
 #include <stdio.h>
@@ -14,7 +17,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
-#define CONSUMPTION_ESTIMATE 1000
+#define CONSUMPTION_ESTIMATE 20000
 #define TARGET_COUNT 1000
 
 static long layer(long a, long b, long c, long k);
