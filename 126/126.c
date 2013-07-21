@@ -14,22 +14,23 @@
 #include <stdbool.h>
 #include <assert.h>
 
-#define ESTIMATE 1000
+#define CONSUMPTION_ESTIMATE 1000
+#define TARGET_COUNT 1000
 
 static long layer(long a, long b, long c, long k);
 
 int main(int argc, const char *argv[]) {
-    long count[ESTIMATE + 1];
+    long count[CONSUMPTION_ESTIMATE + 1];
     memset(count, 0, sizeof(count));
-    for (long a = 1; a <= ESTIMATE; a++) {
+    for (long a = 1; a <= CONSUMPTION_ESTIMATE; a++) {
         // check if a*1*1 exceeds range
-        if (layer(a, 1, 1, 1) > ESTIMATE) {
+        if (layer(a, 1, 1, 1) > CONSUMPTION_ESTIMATE) {
             break;
         }
         
         for (long b = 1; b <= a; b++) {
             // check if a*b*1 exceeds range
-            if (layer(a, b, 1, 1) > ESTIMATE) {
+            if (layer(a, b, 1, 1) > CONSUMPTION_ESTIMATE) {
                 break;
             }
 
@@ -37,7 +38,7 @@ int main(int argc, const char *argv[]) {
                 long k = 1;
                 for (;;) {
                     long consumption = layer(a, b, c, k);
-                    if (consumption > ESTIMATE) {
+                    if (consumption > CONSUMPTION_ESTIMATE) {
                         break;
                     }
                     count[consumption]++;
@@ -46,6 +47,19 @@ int main(int argc, const char *argv[]) {
             }
         }
     }
+    for (long i = 1; i <= CONSUMPTION_ESTIMATE; i++) {
+        if (count[i] == TARGET_COUNT) {
+            printf("%ld\n", i);
+            exit(0);
+        }
+    }
+    for (long i = 1; i <= CONSUMPTION_ESTIMATE; i++) {
+        printf("%ld\t", count[i]);
+        if (i % 10 == 0) {
+            putchar('\n');
+        }
+    }
+    printf("not yet!\n");
     return 0;
 }
 
