@@ -1,0 +1,127 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"n", "/", "k"}], ")"}], "k"], ",", "k"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox[
+   RowBox[{"(", 
+    FractionBox["n", "k"], ")"}], "k"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", 
+    RowBox[{"Log", "[", 
+     FractionBox["n", "k"], "]"}]}], ")"}]}]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{
+   "So", " ", "maximum", " ", "is", " ", "achieved", " ", "at", " ", "either",
+     " ", 
+    RowBox[{"Floor", "[", 
+     RowBox[{"n", "/", "E"}], "]"}], " ", "or", " ", 
+    RowBox[{"Floor", "[", 
+     RowBox[{"n", "/", "E"}], "]"}]}], "+", "1."}], " ", "*)"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"TerminatingQ", "[", 
+    RowBox[{"numerator_", ",", "denominator_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "reduced", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"reduced", "=", 
+       RowBox[{"denominator", "/", 
+        RowBox[{"GCD", "[", 
+         RowBox[{"numerator", ",", "denominator"}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"IntegerQ", "[", 
+         RowBox[{"reduced", "/", "2"}], "]"}], ",", 
+        RowBox[{"reduced", "/=", "2"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"IntegerQ", "[", 
+         RowBox[{"reduced", "/", "5"}], "]"}], ",", 
+        RowBox[{"reduced", "/=", "5"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"reduced", "\[Equal]", "1"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"d", "[", "N_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "k1", ",", "k2"}], "}"}], ",", "\[IndentingNewLine]", 
+     
+     RowBox[{
+      RowBox[{"k1", "=", 
+       RowBox[{"Floor", "[", 
+        RowBox[{"N", "/", "E"}], "]"}]}], ";", 
+      RowBox[{"k2", "=", 
+       RowBox[{"k1", "+", "1"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"k", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"N", "/", "k1"}], ")"}], "k1"], ">", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"N", "/", "k2"}], ")"}], "k2"]}], ",", "k1", ",", "k2"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"N", " ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"TerminatingQ", "[", 
+          RowBox[{"N", ",", "k"}], "]"}], ",", 
+         RowBox[{"-", "1"}], ",", "1"}], "]"}]}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{"d", "[", "n", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "5", ",", "100"}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData["2438"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{"d", "[", "n", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "5", ",", "10000"}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData["48861552"], "Output"]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"My Default.nb"
+]
+
