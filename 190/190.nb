@@ -1,0 +1,58 @@
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"By", " ", "Lagrange", " ", "multiplier"}], ",", " ", 
+   RowBox[{
+    RowBox[{"maximum", " ", "is", " ", "achieved", " ", "at", " ", 
+     SubscriptBox["x", "j"]}], "=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"2", "j"}], 
+      RowBox[{"m", "+", "1"}]], "."}]}]}], " ", "*)"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"p", "[", "m_", "]"}], ":=", 
+   RowBox[{"Floor", "[", 
+    RowBox[{"Product", "[", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"2", "j"}], 
+         RowBox[{"m", "+", "1"}]], ")"}], "j"], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", "m"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"p", "[", "10", "]"}]], "Input"],
+
+Cell[BoxData["4112"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{"p", "[", "m", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"m", ",", "2", ",", "15"}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData["371048281"], "Output"]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{20, Automatic}, {Automatic, 44}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"My Default.nb"
+]
+
