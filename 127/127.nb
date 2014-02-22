@@ -1,12 +1,19 @@
 Notebook[{
 Cell[BoxData[
  RowBox[{
+  RowBox[{"(*", " ", "bound", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"NN", "=", "120000"}], ";"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
   RowBox[{
    RowBox[{"rad", "[", "n_", "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"list", ",", "length"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"list", ",", "length", ",", "i"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"list", "=", 
        RowBox[{"FactorInteger", "[", "n", "]"}]}], ";", "\[IndentingNewLine]", 
@@ -19,10 +26,249 @@ Cell[BoxData[
           RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
         RowBox[{"{", 
          RowBox[{"i", ",", "1", ",", "length"}], "}"}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input"]
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"outputFileName", "=", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<rad\>\""}], "}"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ostream", "=", 
+   RowBox[{"OpenWrite", "[", "outputFileName", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "NN"}], ",", 
+    RowBox[{"i", "++"}], ",", 
+    RowBox[{"Write", "[", 
+     RowBox[{"ostream", ",", 
+      RowBox[{"rad", "[", "i", "]"}]}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Close", "[", "ostream", "]"}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(", "*"}]], " ", 
+  RowBox[{
+   RowBox[{"TURNED", " ", "OUT", " ", "THAT", " ", "WE", " ", 
+    RowBox[{"DON", "'"}], "T", " ", "REALLY", " ", "NEED", " ", "TO", " ", 
+    "TREAT", " ", "THE", " ", "SMALL", " ", 
+    RowBox[{"C", "/", "RAD"}], 
+    RowBox[{"(", "C", ")"}], " ", "CASES", " ", "SEPARATELY", " ", "AS", " ", 
+    "THE", " ", "C", " ", "PROGRAMMING", " ", "LANGUAGE", " ", "IS", " ", 
+    "FAST", " ", 
+    RowBox[{"ENOUGH", ".", " ", "ANYWAY"}]}], ",", " ", 
+   RowBox[{
+    RowBox[{
+    "BELOW", " ", "IS", " ", "HOW", " ", "WE", " ", "TREAT", " ", "THE", " ", 
+     "RAD", 
+     RowBox[{"(", "AB", ")"}]}], "=", 
+    RowBox[{"6", " ", "CASE"}]}], ",", " ", 
+   RowBox[{"AS", " ", "AN", " ", 
+    RowBox[{"EXAMPLE", "."}]}]}], " ", 
+  StyleBox[
+   RowBox[{"*", ")"}]]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "separately", " ", "treat", " ", "the", " ", "case", " ", "of", " ", 
+      "rad", 
+      RowBox[{"(", "ab", ")"}]}], "=", "6"}], ",", " ", 
+    RowBox[{"i", ".", "e", "."}], ",", " ", 
+    RowBox[{"a", "=", 
+     RowBox[{"2", "^", "r1"}]}], ",", " ", 
+    RowBox[{"b", "=", 
+     RowBox[{"3", "^", "r2"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"r1", ",", "r2", ",", "a", ",", "b", ",", "c", ",", 
+       RowBox[{"counter", "=", "0"}], ",", 
+       RowBox[{"sumc", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"r1", "=", "1"}], ",", 
+        RowBox[{
+         RowBox[{"2", "^", "r1"}], "<", "NN"}], ",", 
+        RowBox[{"r1", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"r2", "=", "1"}], ",", 
+           RowBox[{
+            RowBox[{"3", "^", "r2"}], "<", "NN"}], ",", 
+           RowBox[{"r2", "++"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"a", "=", 
+             RowBox[{"2", "^", "r1"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"b", "=", 
+             RowBox[{"3", "^", "r2"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"c", "=", 
+             RowBox[{"a", "+", "b"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"c", ">", "NN"}], ",", 
+              RowBox[{"Continue", "[", "]"}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"rad", "[", "a", "]"}], 
+                RowBox[{"rad", "[", "b", "]"}], 
+                RowBox[{"rad", "[", "c", "]"}]}], "<", "c"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Print", "[", 
+                RowBox[{
+                "a", ",", "\"\<, \>\"", ",", "b", ",", "\"\<, \>\"", ",", "c",
+                  ",", "\"\<---\>\"", ",", 
+                 RowBox[{"rad", "[", "c", "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"counter", "++"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"sumc", "+=", "c"}], ";"}]}], "\[IndentingNewLine]", 
+             "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<counter = \>\"", ",", "counter"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<sumc = \>\"", ",", "sumc"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}], ";"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "2", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "243", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "245", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "35"}],
+  SequenceForm[2, ", ", 243, ", ", 245, "---", 35],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "64", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "6561", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "6625", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "265"}],
+  SequenceForm[64, ", ", 6561, ", ", 6625, "---", 265],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "64", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "19683", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "19747", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "2821"}],
+  SequenceForm[64, ", ", 19683, ", ", 19747, "---", 2821],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "128", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "59049", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "59177", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "1003"}],
+  SequenceForm[128, ", ", 59049, ", ", 59177, "---", 1003],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "512", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "27", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "539", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "77"}],
+  SequenceForm[512, ", ", 27, ", ", 539, "---", 77],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "1024", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "2187", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "3211", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "247"}],
+  SequenceForm[1024, ", ", 2187, ", ", 3211, "---", 247],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "2048", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "2057", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "187"}],
+  SequenceForm[2048, ", ", 9, ", ", 2057, "---", 187],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "2048", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "2187", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "4235", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "385"}],
+  SequenceForm[2048, ", ", 2187, ", ", 4235, "---", 385],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "8192", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "19683", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "27875", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "1115"}],
+  SequenceForm[8192, ", ", 19683, ", ", 27875, "---", 1115],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "16384", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "16393", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "1261"}],
+  SequenceForm[16384, ", ", 9, ", ", 16393, "---", 1261],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "16384", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "2187", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "18571", 
+   "\[InvisibleSpace]", "\<\"---\"\>", "\[InvisibleSpace]", "2653"}],
+  SequenceForm[16384, ", ", 2187, ", ", 18571, "---", 2653],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"counter = \"\>", "\[InvisibleSpace]", "11"}],
+  SequenceForm["counter = ", 11],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"sumc = \"\>", "\[InvisibleSpace]", "158675"}],
+  SequenceForm["sumc = ", 158675],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]]
 },
 WindowSize->{740, 867},
-WindowMargins->{{36, Automatic}, {81, Automatic}},
+WindowMargins->{{24, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 TrackCellChangeTimes->False,
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
