@@ -1,0 +1,141 @@
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Except", " ", "for", " ", "n"}], "=", 
+    RowBox[{
+     RowBox[{"1", " ", "and", " ", "n"}], "=", "2"}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"PD", 
+     RowBox[{"(", "n", ")"}]}], "=", 
+    RowBox[{
+     RowBox[{"3", " ", "implies", " ", "two", " ", 
+      RowBox[{"possibilities", ":", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"(", "i", ")"}], " ", "n"}]}]}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"3", 
+       RowBox[{"k", "^", "2"}]}], "-", 
+      RowBox[{"3", "k"}], "+", 
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{"k", "\[GreaterEqual]", "2"}], ")"}]}]}]}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"6", "k"}], "-", "1"}], ",", " ", 
+   RowBox[{
+    RowBox[{"6", "k"}], "+", "1"}], ",", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"and", " ", "12", "k"}], "+", 
+     RowBox[{"5", " ", "are", " ", "prime"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", "ii", ")"}], " ", "n"}], "=", 
+     RowBox[{
+      RowBox[{"3", 
+       RowBox[{"k", "^", "2"}]}], "+", 
+      RowBox[{"3", "k"}], "+", 
+      RowBox[{"1", " ", 
+       RowBox[{"(", 
+        RowBox[{"k", "\[GreaterEqual]", "2"}], ")"}]}]}]}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"6", "k"}], "-", "1"}], ",", " ", 
+   RowBox[{
+    RowBox[{"6", "k"}], "+", "5"}], ",", " ", 
+   RowBox[{
+    RowBox[{"and", " ", "12", "k"}], "-", 
+    RowBox[{"7", " ", "are", " ", 
+     RowBox[{"prime", "."}]}]}]}], "\[IndentingNewLine]", "*)"}]], "Input",
+ CellChangeTimes->{{3.602098823588688*^9, 3.60209895511292*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"count", "=", "2"}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"n", "=", 
+    RowBox[{
+     RowBox[{"1", " ", "and", " ", "n"}], "=", "2"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"kTargetCount", "=", "2000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"k", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{"True", ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"6", "k"}], "-", "1"}], "]"}], "&&", 
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"6", "k"}], "+", "1"}], "]"}], "&&", 
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"12", "k"}], "+", "5"}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"count", "++"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"count", "\[Equal]", "kTargetCount"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Print", "[", 
+            RowBox[{
+             RowBox[{"3", 
+              RowBox[{"k", "^", "2"}]}], "-", 
+             RowBox[{"3", "k"}], "+", "2"}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
+         ";"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"6", "k"}], "-", "1"}], "]"}], "&&", 
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"6", "k"}], "+", "5"}], "]"}], "&&", 
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"12", "k"}], "-", "7"}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"count", "++"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"count", "\[Equal]", "kTargetCount"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Print", "[", 
+            RowBox[{
+             RowBox[{"3", 
+              RowBox[{"k", "^", "2"}]}], "+", 
+             RowBox[{"3", "k"}], "+", "1"}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
+         ";"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"k", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]}], "Input"],
+
+Cell[BoxData["271"], "Print"]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"My Default.nb"
+]
+
