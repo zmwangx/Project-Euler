@@ -1,0 +1,62 @@
+% analysis.tex
+%
+% Created by Zhiming Wang on April 18, 2015.
+
+\input{/Users/zmwang/.template/latex/preamble.tex}
+
+\title{Project Euler problem 139}
+\author{Zhiming Wang}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Consider the irreducible cases where
+\[
+a = 2mn,\, b = m^2 - n^2,\, c = m^2 + n^2,
+\]
+where positive integers $m$ and $n$ are coprime. We would like $c$ be
+a multiple of $b - a$. Suppose $c = k(b - a)$, then we immediately
+obtain the equation
+\[
+(k-1)m^2 - 2kmn - (k+1)n^2 = 0,
+\]
+from which
+\[
+\frac{m}{n} = \frac{k + \sqrt{2k^2-1}}{k - 1}.
+\]
+$m/n \in \mathbb{Q}$, so this is again a Pell equation problem
+(Project Euler loves Pell equations). Denote $\sqrt{2k^2-1}$ by $l$,
+then the solutions to the Pell equation $2k^2 - 1 = l^2$ are
+\[
+k = \frac{(1+\sqrt{2})^{2j+1} - (1-\sqrt{2})^{2j+1}}{2\sqrt{2}},\,
+l = \frac{(1+\sqrt{2})^{2j+1} + (1-\sqrt{2})^{2j+1}}{2},
+\]
+where $j \in \mathbb{Z}$. Plugging these solutions back into the
+relation of $m$ and $n$, after some rather involved calculations we
+get
+\[
+\frac{a}{b-a}
+= \frac{2mn}{m^2 - n^2 - 2mn}
+= \frac{2(k+l)(k-1)}{2k+l-1}
+= \frac{(1+\sqrt{2})^{2j+1} + (1-\sqrt{2})^{2j+1} - 2}{4}.
+\]
+This is very nice and rather surprising, and there must be an elegant
+explanation for this, although I didn't think deeper. Apparently this
+is an integer, so considering the fact that $a$ and $b$ are coprime,
+we immediately see that
+\[
+|b - a| = 1.
+\]
+At this point we define a function
+\[
+a(j) = \frac{(1+\sqrt{2})^{2j+1} + (1-\sqrt{2})^{2j+1} - 2}{4},
+\]
+and it is easy to see that $a(-j-1) = -a(j)-1$ and $a(0) = 0$, so we
+only need to consider positive $j$'s. Having established all
+irreducible cases, it is trivial to count the total number of
+Pythagorean triples satisfying the expected property (all integer
+multiples of every irreducible triple count).
+
+\end{document}
