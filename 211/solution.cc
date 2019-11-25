@@ -1,11 +1,12 @@
-#include <iostream>
 #include <array>
 #include <cmath>
+#include <iostream>
 
 const auto LIMIT = 64'000'000ULL;
 std::array<unsigned long long, LIMIT + 1> sigma;
 
-void calculate_sigmas() {
+void calculate_sigmas()
+{
     std::fill(sigma.begin(), sigma.end(), 1);
     for (auto i = 2ULL; i <= LIMIT; ++i) {
         auto i_square = i * i;
@@ -15,12 +16,14 @@ void calculate_sigmas() {
     }
 }
 
-inline bool is_perfect_square(unsigned long long n) {
+inline bool is_perfect_square(unsigned long long n)
+{
     unsigned long long root = std::sqrt(n);
     return root * root == n;
 }
 
-size_t sum_perfect_ns() {
+size_t sum_perfect_ns()
+{
     size_t sum = 0;
     for (auto i = 1ULL; i <= LIMIT; ++i) {
         if (is_perfect_square(sigma[i])) {

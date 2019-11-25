@@ -1,6 +1,6 @@
+#include <array>
 #include <boost/multiprecision/miller_rabin.hpp>
 #include <iostream>
-#include <array>
 
 using namespace boost::multiprecision;
 

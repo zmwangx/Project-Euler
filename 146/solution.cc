@@ -175,10 +175,8 @@ const unsigned long long small_primes[] = {
 
 inline bool is_prime(unsigned long long n)
 {
-    for (auto it = std::begin(small_primes); it != std::end(small_primes); ++it)
-    {
-        if (n % *it == 0 && n != *it)
-        {
+    for (auto it = std::begin(small_primes); it != std::end(small_primes); ++it) {
+        if (n % *it == 0 && n != *it) {
             return false;
         }
     }
@@ -188,11 +186,9 @@ inline bool is_prime(unsigned long long n)
 int main()
 {
     unsigned long long sum = 0;
-    for (unsigned long long n = 10; n < LIMIT; n += 10)
-    {
+    for (unsigned long long n = 10; n < LIMIT; n += 10) {
         // Special mod 210 consideration
-        switch (n % 210)
-        {
+        switch (n % 210) {
         case 10:
         case 80:
         case 130:
@@ -203,9 +199,7 @@ int main()
             continue;
         }
         unsigned long long n2 = n * n;
-        if (is_prime(n2 + 1) && is_prime(n2 + 3) && is_prime(n2 + 7) && is_prime(n2 + 9) &&
-            is_prime(n2 + 13) && !is_prime(n2 + 21) && is_prime(n2 + 27))
-        {
+        if (is_prime(n2 + 1) && is_prime(n2 + 3) && is_prime(n2 + 7) && is_prime(n2 + 9) && is_prime(n2 + 13) && !is_prime(n2 + 21) && is_prime(n2 + 27)) {
             sum += n;
             std::cout << n << ": "
                       << n2 + 1 << " "
