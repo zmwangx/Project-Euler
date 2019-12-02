@@ -5,8 +5,5 @@ CXXFLAGS = -std=c++14 -Wall -Werror
 
 all: solution
 
-prime: solution.o
-	$(LINK.cc) $^ $(LDLIBS) -o $@
-
 clean:
 	@- $(RM) solution solution.o
