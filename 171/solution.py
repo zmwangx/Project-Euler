@@ -2,19 +2,7 @@
 
 import collections
 import functools
-import itertools
 import math
-
-
-def dedupe_perm(iterable, key=None):
-    counter = collections.Counter(iterable)
-    total = sum(counter.values())
-    key_counts = sorted(counter.items(), key=key)
-    for key, count in key_counts[:-1]:
-        print(key, count)
-
-
-# dedupe_perm("aaaabbbcc")
 
 
 def break_squares(num_digits):
