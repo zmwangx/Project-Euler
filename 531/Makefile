@@ -1,4 +1,3 @@
-CC = clang++
 CXXFLAGS = -std=c++14 -Wall -Werror -Os -I/usr/local/include/flint
 LDFLAGS = -lflint -lgmp
 
