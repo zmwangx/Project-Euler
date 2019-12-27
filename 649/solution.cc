@@ -97,11 +97,6 @@ int main()
                         (count += multinomial(n0, n1, n2, n3, n4) % mod
                                 * pow[0][n0] * pow[1][n1] * pow[2][n2] * pow[3][n3] * pow[4][n4])
                             %= mod;
-                        // std::cout << n0 << n1 << n2 << n3 << n4 << " "
-                        //           << multinomial(n0, n1, n2, n3, n4) << " "
-                        //           << multinomial(n0, n1, n2, n3, n4) % mod
-                        //         * pow[0][n0] * pow[1][n1] * pow[2][n2] * pow[3][n3] * pow[4][n4]
-                        //           << std::endl;
                     }
                 }
             }
