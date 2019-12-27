@@ -1,4 +1,4 @@
-CXXFLAGS = -std=c++14 -Wall -Werror -Os
+CXXFLAGS = -std=c++17 -Wall -Werror -Os
 LDFLAGS = -lprimesieve
 
 .PHONY: all clean

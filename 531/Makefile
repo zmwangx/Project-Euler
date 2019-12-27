@@ -1,4 +1,4 @@
-CXXFLAGS = -std=c++14 -Wall -Werror -Os -I/usr/local/include/flint
+CXXFLAGS = -std=c++17 -Wall -Werror -Os -I/usr/local/include/flint
 LDFLAGS = -lflint -lgmp
 
 .PHONY: all clean
