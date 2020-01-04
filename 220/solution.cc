@@ -93,25 +93,6 @@ std::ostream& operator<<(std::ostream& os, const Movement& m)
 const Movement L(0, 0, 1i), R(0, 0, -1i), F(1, 1, 1);
 std::vector<Movement> ma, mb;
 
-// Movement calculate_movement(ll steps, bool in_a)
-// {
-//     if (steps == 0) {
-//         return {};
-//     }
-//     int k = std::log2l(steps + 1);
-//     ll s = (1LL << k) - 1;
-//     if (steps == s) {
-//         return in_a ? ma[k] : mb[k];
-//     }
-//     if (in_a) {
-//         // M(k)(a) R M(k)(b) FR, enter M(k)(b).
-//         return ma[k] + R + calculate_movement(steps - s, false);
-//     } else {
-//         // LF M(k)(a) L M(k)(b), enter M(k)(b).
-//         return L + F + ma[k] + L + calculate_movement(steps - s - 1, false);
-//     }
-// }
-
 Movement calculate_movement(ll steps, int k, bool in_a)
 {
     if (steps == 0) {
