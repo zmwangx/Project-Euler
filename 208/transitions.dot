@@ -1,0 +1,22 @@
+digraph {
+    { rank=same 0 1 2 3 4 }
+    { rank=same 9 8 7 6 5 }
+
+    0 -> 1
+    1 -> 2
+    2 -> 3
+    3 -> 4
+    4 -> 0
+
+    6 -> 5 [dir=back]
+    7 -> 6 [dir=back]
+    8 -> 7 [dir=back]
+    9 -> 8 [dir=back]
+    5 -> 9 [dir=back, headport=s]
+
+    0 -> 9 [dir=both]
+    1 -> 8 [dir=both]
+    2 -> 7 [dir=both]
+    3 -> 6 [dir=both]
+    4 -> 5 [dir=both]
+}
