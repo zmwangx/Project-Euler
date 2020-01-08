@@ -1,4 +1,4 @@
-CXXFLAGS = -std=c++17 -Wall -Werror -Os -Xpreprocessor -fopenmp
+CXXFLAGS = -std=c++17 -Wall -Werror -Ofast -march=native -Xpreprocessor -fopenmp
 LDFLAGS = -lprimesieve -lomp
 
 .PHONY: all clean

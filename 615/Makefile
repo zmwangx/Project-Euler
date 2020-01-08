@@ -1,4 +1,4 @@
-CXXFLAGS = -std=c++17 -Wall -Werror -Os -I/usr/local/include/flint
+CXXFLAGS = -std=c++17 -Wall -Werror -Ofast -march=native -I/usr/local/include/flint
 LDFLAGS = -lprimesieve -lflint -lgmp
 
 .PHONY: all clean
